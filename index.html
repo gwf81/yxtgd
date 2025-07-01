@@ -1,14 +1,13 @@
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GWF - 光纤通信解决方案提供商</title>
+  <title>宇讯通光电 - 光纤通信设备专业制造商</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -40,14 +39,12 @@
       .text-shadow-lg {
         text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
       }
-      .transition-custom {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      .product-card-hover {
+        transition: all 0.3s ease;
       }
-      .hover-scale {
-        transition: transform 0.3s ease;
-      }
-      .hover-scale:hover {
-        transform: scale(1.03);
+      .product-card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
       }
     }
   </style>
@@ -60,41 +57,50 @@
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex items-center">
-            <a href="#" class="flex-shrink-0 flex items-center">
-              <i class="fa fa-connectdevelop text-3xl mr-2"></i>
-              <span class="text-xl font-bold">GWF</span>
+            <a href="#home" class="flex-shrink-0 flex items-center">
+              <img src="待填路径" alt="LOGO" class="h-12 mr-2">
+              <span class="text-xl font-bold lang" key="companyName">宇讯通光电</span>
             </a>
             <div class="hidden md:ml-10 md:flex md:space-x-8">
-              <a href="#home"
-                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">首页</a>
+              <a href="#home" class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom lang"
+                key="navHome">首页</a>
+              <a href="#about" class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom lang"
+                key="navAbout">公司简介</a>
               <a href="#products"
-                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">产品中心</a>
-              <a href="#solutions"
-                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">解决方案</a>
-              <a href="#about"
-                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">关于我们</a>
-              <a href="#news"
-                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">新闻动态</a>
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom lang"
+                key="navProducts">产品中心</a>
+              <a href="#company-detail"
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom lang"
+                key="navCompanyDetail">公司详细介绍</a>
               <a href="#contact"
-                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">联系我们</a>
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom lang"
+                key="navContact">联系我们</a>
             </div>
           </div>
           <div class="flex items-center">
-            <div class="flex-shrink-0">
-              <button type="button"
-                class="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-custom">在线咨询</button>
-            </div>
             <div class="ml-4 flex items-center md:ml-6">
               <button type="button"
                 class="p-1 rounded-full text-white hover:text-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
                 <span class="sr-only">搜索</span>
                 <i class="fa fa-search text-lg"></i>
               </button>
-              <button type="button"
-                class="ml-3 p-1 rounded-full text-white hover:text-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent md:ml-0">
-                <span class="sr-only">语言选择</span>
-                <i class="fa fa-globe text-lg"></i>
-              </button>
+            </div>
+            <!-- 语言切换按钮 -->
+            <div class="ml-4 flex items-center">
+              <div class="relative">
+                <button id="language-toggle"
+                  class="flex items-center justify-center h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20 transition-custom">
+                  <span class="lang" key="currentLang">中文</span>
+                  <i class="fa fa-chevron-down ml-1 text-xs"></i>
+                </button>
+                <div id="language-dropdown"
+                  class="hidden absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-50">
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 language-option"
+                    data-lang="zh">中文</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 language-option"
+                    data-lang="en">English</a>
+                </div>
+              </div>
             </div>
             <div class="ml-4 flex items-center md:hidden">
               <button type="button" id="mobile-menu-button"
@@ -110,139 +116,150 @@
       <!-- 移动端菜单 -->
       <div id="mobile-menu" class="hidden md:hidden bg-primary/95">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a href="#home" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">首页</a>
-          <a href="#products" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">产品中心</a>
-          <a href="#solutions" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">解决方案</a>
-          <a href="#about" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">关于我们</a>
-          <a href="#news" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">新闻动态</a>
-          <a href="#contact" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">联系我们</a>
+          <a href="#home" class="text-white hover:text-accent block px-3 py-2 text-base font-medium lang"
+            key="navHome">首页</a>
+          <a href="#about" class="text-white hover:text-accent block px-3 py-2 text-base font-medium lang"
+            key="navAbout">公司简介</a>
+          <a href="#products" class="text-white hover:text-accent block px-3 py-2 text-base font-medium lang"
+            key="navProducts">产品中心</a>
+          <a href="#company-detail" class="text-white hover:text-accent block px-3 py-2 text-base font-medium lang"
+            key="navCompanyDetail">公司详细介绍</a>
+          <a href="#contact" class="text-white hover:text-accent block px-3 py-2 text-base font-medium lang"
+            key="navContact">联系我们</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- 轮播图 -->
+  <!-- 英雄区 -->
   <section id="home" class="relative pt-16 overflow-hidden">
-    <div class="carousel relative h-[80vh]">
-      <div class="carousel-inner relative overflow-hidden w-full h-full">
-        <!-- 轮播项1 -->
-        <div class="carousel-item active absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
-          <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/60 z-10"></div>
-          <img src="https://picsum.photos/id/180/1920/1080" alt="光纤网络解决方案"
-            class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 z-20 flex items-center">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="max-w-3xl">
-                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white leading-tight text-shadow-lg mb-4">
-                  高速光纤网络<br>连接未来
-                </h2>
-                <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 text-shadow">
-                  GWF提供业界领先的光纤通信解决方案，助力企业实现数字化转型，构建高速、稳定、智能的网络基础设施。
-                </p>
-                <div class="flex flex-wrap gap-4">
-                  <a href="#products"
-                    class="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
-                    查看产品
-                  </a>
-                  <a href="#contact"
-                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
-                    联系我们
-                  </a>
-                </div>
-              </div>
-            </div>
+    <div class="carousel relative h-[70vh] bg-gradient-to-r from-primary to-secondary">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white leading-tight text-shadow-lg mb-6 lang"
+            key="heroTitle">
+            专业光纤通信设备制造商
+          </h1>
+          <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 max-w-3xl mx-auto lang" key="heroSubtitle">
+            22年光纤连接器生产经验 | 15年设备制造经验 | 30+项专利技术
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#products"
+              class="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl lang"
+              key="heroButton1">
+              浏览产品
+            </a>
+            <a href="#contact"
+              class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl lang"
+              key="heroButton2">
+              联系我们
+            </a>
           </div>
-        </div>
-
-        <!-- 轮播项2 -->
-        <div class="carousel-item absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
-          <div class="absolute inset-0 bg-gradient-to-r from-dark/80 to-primary/60 z-10"></div>
-          <img src="https://picsum.photos/id/250/1920/1080" alt="数据中心解决方案"
-            class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 z-20 flex items-center">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="max-w-3xl">
-                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white leading-tight text-shadow-lg mb-4">
-                  数据中心互联<br>无限可能
-                </h2>
-                <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 text-shadow">
-                  我们的数据中心解决方案提供高密度、低损耗的光纤连接，满足您对带宽的无限需求，支持业务快速发展。
-                </p>
-                <div class="flex flex-wrap gap-4">
-                  <a href="#solutions"
-                    class="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
-                    解决方案
-                  </a>
-                  <a href="#case-studies"
-                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
-                    成功案例
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 轮播项3 -->
-        <div class="carousel-item absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
-          <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-dark/60 z-10"></div>
-          <img src="https://picsum.photos/id/160/1920/1080" alt="5G网络建设"
-            class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 z-20 flex items-center">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="max-w-3xl">
-                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white leading-tight text-shadow-lg mb-4">
-                  5G时代<br>光纤先行
-                </h2>
-                <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 text-shadow">
-                  为5G网络建设提供可靠的光纤基础设施，支持超高速数据传输，助力万物互联的智能世界。
-                </p>
-                <div class="flex flex-wrap gap-4">
-                  <a href="#5g-solutions"
-                    class="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
-                    5G解决方案
-                  </a>
-                  <a href="#contact"
-                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
-                    技术咨询
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 轮播控制按钮 -->
-        <button
-          class="absolute top-1/2 left-4 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-custom"
-          id="prev-slide">
-          <i class="fa fa-angle-left text-xl"></i>
-        </button>
-        <button
-          class="absolute top-1/2 right-4 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-custom"
-          id="next-slide">
-          <i class="fa fa-angle-right text-xl"></i>
-        </button>
-
-        <!-- 轮播指示器 -->
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
-          <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white focus:outline-none carousel-indicator active"
-            data-index="0"></button>
-          <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white focus:outline-none carousel-indicator"
-            data-index="1"></button>
-          <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white focus:outline-none carousel-indicator"
-            data-index="2"></button>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 公司简介 -->
+  <section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4 lang" key="aboutTitle">公司简介</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg lang" key="aboutSubtitle">
+          深圳市宇讯通光电有限公司是光通信器件及设备研发、生产和销售的专业供应商
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <h3 class="text-2xl font-bold mb-6 text-primary lang" key="aboutAdvantages">企业核心优势</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <div
+                class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                <i class="fa fa-lightbulb-o text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-1 lang" key="advantage1Title">技术研发</h4>
+                <p class="text-gray-600 lang" key="advantage1Desc">
+                  拥有专业技术团队，在光纤研磨机、研磨夹具、光电自动化设备等研发技术上处于国内领先水平
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div
+                class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                <i class="fa fa-certificate text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-1 lang" key="advantage2Title">资质认证</h4>
+                <p class="text-gray-600 lang" key="advantage2Desc">
+                  国家高新技术企业、创新型中小企业，获30多项发明及实用新型专利
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div
+                class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                <i class="fa fa-globe text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-1 lang" key="advantage3Title">全球市场</h4>
+                <p class="text-gray-600 lang" key="advantage3Desc">
+                  产品覆盖全国及欧美、印度、东南亚等地区
+                </p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="text-center">
+              <div class="text-4xl font-bold text-primary mb-2">22年</div>
+              <p class="text-gray-600 lang" key="stat1">光纤连接器生产经验</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-primary mb-2">15年</div>
+              <p class="text-gray-600 lang" key="stat2">设备制造经验</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-primary mb-2">30+</div>
+              <p class="text-gray-600 lang" key="stat3">专利技术</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-primary mb-2">全球</div>
+              <p class="text-gray-600 lang" key="stat4">销售网络</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2 relative">
+          <div class="absolute -top-4 -left-4 w-24 h-24 border-4 border-accent rounded-lg z-0"></div>
+          <div class="relative z-10">
+            <img src="public/images/main.jpeg" alt="公司环境" class="rounded-lg shadow-xl w-full h-auto">
+            <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg max-w-xs">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
+                  <i class="fa fa-trophy text-accent text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600 lang" key="companyAward1">高新技术企业</p>
+                  <p class="text-lg font-bold text-dark lang" key="companyAward2">创新型中小企业</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- 服务优势 -->
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">我们的服务优势</h2>
-        <p class="text-gray-600 max-w-3xl mx-auto text-lg">GWF致力于为客户提供高品质的光纤通信产品和解决方案，凭借专业的技术团队和完善的服务体系，赢得了客户的广泛认可。</p>
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4 lang" key="serviceAdvantages">我们的服务优势</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg lang" key="serviceAdvantagesDesc">
+          宇讯通光电致力于为客户提供高品质的光纤通信产品和解决方案，凭借专业的技术团队和完善的服务体系，赢得了客户的广泛认可。
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -251,8 +268,9 @@
           <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
             <i class="fa fa-lightbulb-o text-2xl text-primary"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-3">创新技术</h3>
-          <p class="text-gray-600">我们拥有一支高素质的研发团队，持续投入研发，不断推出创新产品，满足客户不断变化的需求。</p>
+          <h3 class="text-xl font-semibold mb-3 lang" key="innovation">创新技术</h3>
+          <p class="text-gray-600 lang" key="innovationDesc" key="innovationDescKey">
+            我们拥有一支高素质的研发团队，持续投入研发，不断推出创新产品，满足客户不断变化的需求。</p>
         </div>
 
         <!-- 优势2 -->
@@ -260,8 +278,8 @@
           <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
             <i class="fa fa-certificate text-2xl text-secondary"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-3">品质保证</h3>
-          <p class="text-gray-600">严格的质量控制体系，所有产品均通过多重测试，确保产品性能稳定可靠，符合国际标准。</p>
+          <h3 class="text-xl font-semibold mb-3 lang" key="quality">品质保证</h3>
+          <p class="text-gray-600 lang" key="qualityDesc">严格的质量控制体系，所有产品均通过多重测试，确保产品性能稳定可靠，符合国际标准。</p>
         </div>
 
         <!-- 优势3 -->
@@ -269,8 +287,8 @@
           <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6">
             <i class="fa fa-cogs text-2xl text-accent"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-3">定制服务</h3>
-          <p class="text-gray-600">根据客户的特定需求，提供个性化的解决方案和定制产品，为客户创造更大价值。</p>
+          <h3 class="text-xl font-semibold mb-3 lang" key="customizedService">定制服务</h3>
+          <p class="text-gray-600 lang" key="customizedServiceDesc">根据客户的特定需求，提供个性化的解决方案和定制产品，为客户创造更大价值。</p>
         </div>
 
         <!-- 优势4 -->
@@ -278,8 +296,8 @@
           <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
             <i class="fa fa-headphones text-2xl text-primary"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-3">专业支持</h3>
-          <p class="text-gray-600">7×24小时技术支持团队，快速响应客户需求，为客户提供全方位的技术支持和售后服务。</p>
+          <h3 class="text-xl font-semibold mb-3 lang" key="professionalSupport">专业支持</h3>
+          <p class="text-gray-600 lang" key="professionalSupportDesc">7×24小时技术支持团队，快速响应客户需求，为客户提供全方位的技术支持和售后服务。</p>
         </div>
       </div>
     </div>
@@ -289,153 +307,275 @@
   <section id="products" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">产品中心</h2>
-        <p class="text-gray-600 max-w-3xl mx-auto text-lg">GWF提供全面的光纤通信产品，包括光纤连接器、光模块、光纤跳线、配线架等，满足不同领域的应用需求。</p>
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4 lang" key="productsTitle">产品中心</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg lang" key="productsSubtitle">
+          提供光纤研磨、组装、检测设备及光通信器件全系列产品
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- 产品1 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+      <!-- 产品分类标签 -->
+      <div class="flex flex-wrap justify-center mb-12 gap-2">
+        <button
+          class="product-tab active bg-primary text-white px-5 py-2 rounded-full text-sm font-medium transition-custom"
+          data-category="all">
+          <span class="lang" key="categoryAll">全部产品</span>
+        </button>
+        <button
+          class="product-tab bg-gray-200 text-gray-700 px-5 py-2 rounded-full text-sm font-medium transition-custom"
+          data-category="polishing">
+          <span class="lang" key="categoryPolishing">研磨设备</span>
+        </button>
+        <button
+          class="product-tab bg-gray-200 text-gray-700 px-5 py-2 rounded-full text-sm font-medium transition-custom"
+          data-category="assembling">
+          <span class="lang" key="categoryAssembling">组装设备</span>
+        </button>
+        <button
+          class="product-tab bg-gray-200 text-gray-700 px-5 py-2 rounded-full text-sm font-medium transition-custom"
+          data-category="testing">
+          <span class="lang" key="categoryTesting">检测设备</span>
+        </button>
+        <button
+          class="product-tab bg-gray-200 text-gray-700 px-5 py-2 rounded-full text-sm font-medium transition-custom"
+          data-category="accessories">
+          <span class="lang" key="categoryAccessories">插芯设备</span>
+        </button>
+        <button
+          class="product-tab bg-gray-200 text-gray-700 px-5 py-2 rounded-full text-sm font-medium transition-custom"
+          data-category="components">
+          <span class="lang" key="categoryComponents">光通信器件</span>
+        </button>
+      </div>
+
+      <!-- 产品列表 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 产品1: FPM-1000A调速光纤研磨机 -->
+        <div class="product-item product-card-hover bg-white rounded-xl overflow-hidden shadow-lg"
+          data-category="polishing">
           <div class="relative h-64 overflow-hidden">
-            <img src="https://picsum.photos/id/160/600/400" alt="光纤连接器"
+            <img src="public/images/宇讯通产品（高清图）/宇讯通跳线生产设备（高像素图）/研磨机系统/FPM-1000A调速光纤研磨机.jpg" alt="FPM-1000A调速光纤研磨机"
               class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
-              <div class="p-6">
-                <span class="bg-accent text-white text-xs font-semibold px-2.5 py-0.5 rounded">热销产品</span>
-                <h3 class="text-xl font-bold text-white mt-2">光纤连接器</h3>
-              </div>
+            <div class="absolute top-4 left-4 bg-accent text-white text-xs font-semibold px-2.5 py-0.5 rounded lang"
+              key="badgeHot">
+              热销产品
             </div>
           </div>
           <div class="p-6">
-            <p class="text-gray-600 mb-4">高精度光纤连接器，低插入损耗，高回波损耗，广泛应用于数据中心、通信网络等领域。</p>
-            <div class="flex justify-between items-center">
-              <span class="text-primary font-semibold">查看详情</span>
-              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
-                <i class="fa fa-arrow-right"></i>
-              </a>
+            <h3 class="text-xl font-bold mb-2 lang" key="product1Title">FPM-1000A调速光纤研磨机</h3>
+            <p class="text-gray-600 mb-4 lang" key="product1Desc">
+              四角加压设计，可加工FC/SC/ST/LC等标准光纤连接器，适用于PC及APC产品大批量生产
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full lang"
+                key="tagPolishing">光纤研磨</span>
+              <span class="bg-secondary/10 text-secondary text-xs px-2 py-1 rounded-full lang"
+                key="tagHighPrecision">高精度</span>
             </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product1Spec1">加工能力：SC:36 Max / LC:50 Max</span></p>
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product1Spec2">转速可调：0-150转/分钟</span></p>
+            </div>
+            <a href="#product-detail-1"
+              class="mt-4 inline-flex items-center text-primary hover:text-accent transition-custom font-medium lang"
+              key="viewDetails">
+              查看详情
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
           </div>
         </div>
 
-        <!-- 产品2 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+        <!-- 产品2: YXT-SCYJ-01全自动陶瓷插芯压接机 -->
+        <div class="product-item product-card-hover bg-white rounded-xl overflow-hidden shadow-lg"
+          data-category="assembling">
           <div class="relative h-64 overflow-hidden">
-            <img src="https://picsum.photos/id/161/600/400" alt="光模块"
+            <img src="public/images/宇讯通产品（高清图）/宇讯通跳线生产设备（高像素图）/全自动插芯压接机.jpg" alt="YXT-SCYJ-01全自动陶瓷插芯压接机"
               class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
-              <div class="p-6">
-                <span class="bg-secondary text-white text-xs font-semibold px-2.5 py-0.5 rounded">新品上市</span>
-                <h3 class="text-xl font-bold text-white mt-2">光模块</h3>
-              </div>
+            <div class="absolute top-4 left-4 bg-secondary text-white text-xs font-semibold px-2.5 py-0.5 rounded lang"
+              key="badgeNew">
+              新品上市
             </div>
           </div>
           <div class="p-6">
-            <p class="text-gray-600 mb-4">高速光模块，支持10G/25G/40G/100G传输速率，低功耗设计，满足数据中心高速互联需求。</p>
-            <div class="flex justify-between items-center">
-              <span class="text-primary font-semibold">查看详情</span>
-              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
-                <i class="fa fa-arrow-right"></i>
-              </a>
+            <h3 class="text-xl font-bold mb-2 lang" key="product2Title">YXT-SCYJ-01全自动陶瓷插芯压接机</h3>
+            <p class="text-gray-600 mb-4 lang" key="product2Desc">
+              具备自动送料、方向识别、压合及成品输出功能，提升插芯压接效率与精度，降低劳动强度
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full lang"
+                key="tagAutoCrimping">自动压接</span>
+              <span class="bg-secondary/10 text-secondary text-xs px-2 py-1 rounded-full lang"
+                key="tagCeramicFerrule">陶瓷插芯</span>
             </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product2Spec1">压配规格·：SC-250-D(42.499±0.0005mmX10.5mm)</span></p>
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product2Spec2">生产效率：5000-6500pcs/小时</span></p>
+            </div>
+            <a href="#product-detail-2"
+              class="mt-4 inline-flex items-center text-primary hover:text-accent transition-custom font-medium lang"
+              key="viewDetails">
+              查看详情
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
           </div>
         </div>
 
-        <!-- 产品3 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+        <!-- 产品3: 光纤端面检测仪 -->
+        <div class="product-item product-card-hover bg-white rounded-xl overflow-hidden shadow-lg"
+          data-category="testing">
           <div class="relative h-64 overflow-hidden">
-            <img src="https://picsum.photos/id/162/600/400" alt="光纤跳线"
+            <img src="public/images/宇讯通产品（高清图）/宇讯通跳线生产设备（高像素图）/端面检测仪/一体式光纤端面检测仪.jpg" alt="光纤端面检测仪"
               class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
-              <div class="p-6">
-                <span class="bg-primary text-white text-xs font-semibold px-2.5 py-0.5 rounded">畅销产品</span>
-                <h3 class="text-xl font-bold text-white mt-2">光纤跳线</h3>
-              </div>
+            <div class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-2.5 py-0.5 rounded lang"
+              key="badgeCore">
+              核心产品
             </div>
           </div>
           <div class="p-6">
-            <p class="text-gray-600 mb-4">高品质光纤跳线，多种接头类型可选，支持不同应用场景，提供定制化长度和颜色服务。</p>
-            <div class="flex justify-between items-center">
-              <span class="text-primary font-semibold">查看详情</span>
-              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
-                <i class="fa fa-arrow-right"></i>
-              </a>
+            <h3 class="text-xl font-bold mb-2 lang" key="product3Title">一体式光纤端面检测仪</h3>
+            <p class="text-gray-600 mb-4 lang" key="product3Desc">
+              可将光纤端面放大200/400/800倍，快速检测脏污、划痕等不良，保障光纤连接质量
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full lang"
+                key="tagEndfaceInspection">端面检测</span>
+              <span class="bg-secondary/10 text-secondary text-xs px-2 py-1 rounded-full lang"
+                key="tagHighDefZoom">高清放大</span>
             </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product3Spec1">放大倍数：200X/400X/800X</span></p>
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product3Spec2">显示屏：8英寸TFT</span></p>
+            </div>
+            <a href="#product-detail-3"
+              class="mt-4 inline-flex items-center text-primary hover:text-accent transition-custom font-medium lang"
+              key="viewDetails">
+              查看详情
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
           </div>
         </div>
 
-        <!-- 产品4 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+        <!-- 产品4: YXT-RBJ-10光纤热剥机 -->
+        <div class="product-item product-card-hover bg-white rounded-xl overflow-hidden shadow-lg"
+          data-category="accessories">
           <div class="relative h-64 overflow-hidden">
-            <img src="https://picsum.photos/id/163/600/400" alt="配线架"
+            <img src="public/images/宇讯通产品（高清图）/宇讯通跳线生产设备（高像素图）/自动单芯剥皮剪毛机.jpg" alt="YXT-RBJ-10光纤热剥机"
               class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
-              <div class="p-6">
-                <span class="bg-secondary text-white text-xs font-semibold px-2.5 py-0.5 rounded">新品上市</span>
-                <h3 class="text-xl font-bold text-white mt-2">配线架</h3>
-              </div>
+            <div class="absolute top-4 left-4 bg-accent text-white text-xs font-semibold px-2.5 py-0.5 rounded lang"
+              key="badgeBestSeller">
+              畅销产品
             </div>
           </div>
           <div class="p-6">
-            <p class="text-gray-600 mb-4">高密度光纤配线架，模块化设计，便于安装和管理，优化数据中心空间利用率。</p>
-            <div class="flex justify-between items-center">
-              <span class="text-primary font-semibold">查看详情</span>
-              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
-                <i class="fa fa-arrow-right"></i>
-              </a>
+            <h3 class="text-xl font-bold mb-2 lang" key="product4Title">YXT-RBJ-10多芯光纤热剥机</h3>
+            <p class="text-gray-600 mb-4 lang" key="product4Desc">
+              可一次性剥除1-12根光纤缓冲层，直达125μm包层，适用于多种紧包光缆
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full lang"
+                key="tagFiberStripping">光纤剥除</span>
+              <span class="bg-secondary/10 text-secondary text-xs px-2 py-1 rounded-full lang"
+                key="tagMultiCore">多芯处理</span>
             </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product4Spec1">剥离范围：900μm→125μm</span></p>
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product4Spec2">剥除一致性：±1μm</span></p>
+            </div>
+            <a href="#product-detail-4"
+              class="mt-4 inline-flex items-center text-primary hover:text-accent transition-custom font-medium lang"
+              key="viewDetails">
+              查看详情
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
           </div>
         </div>
 
-        <!-- 产品5 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+        <!-- 产品5: 陶瓷插芯 -->
+        <div class="product-item product-card-hover bg-white rounded-xl overflow-hidden shadow-lg"
+          data-category="components">
           <div class="relative h-64 overflow-hidden">
-            <img src="https://picsum.photos/id/164/600/400" alt="光衰减器"
+            <img src="public/images/宇讯通产品（高清图）/宇讯通跳线生产设备（高像素图）/散件机.jpg" alt="陶瓷插芯"
               class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
-              <div class="p-6">
-                <span class="bg-accent text-white text-xs font-semibold px-2.5 py-0.5 rounded">热销产品</span>
-                <h3 class="text-xl font-bold text-white mt-2">光衰减器</h3>
-              </div>
+            <div class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-2.5 py-0.5 rounded lang"
+              key="badgeBasicComponent">
+              基础器件
             </div>
           </div>
           <div class="p-6">
-            <p class="text-gray-600 mb-4">高精度光衰减器，可调式和固定式可选，广泛应用于光通信系统测试和校准。</p>
-            <div class="flex justify-between items-center">
-              <span class="text-primary font-semibold">查看详情</span>
-              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
-                <i class="fa fa-arrow-right"></i>
-              </a>
+            <h3 class="text-xl font-bold mb-2 lang" key="product5Title">SC/FC/LC陶瓷插芯</h3>
+            <p class="text-gray-600 mb-4 lang" key="product5Desc">
+              高精度陶瓷材质，低插入损耗，高回波损耗，适配各类光纤连接器
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full lang"
+                key="tagCeramicMaterial">陶瓷材质</span>
+              <span class="bg-secondary/10 text-secondary text-xs px-2 py-1 rounded-full lang"
+                key="tagLowLoss">低损耗</span>
             </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product5Spec1">插入损耗：≤0.1dB</span></p>
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product5Spec2">回波损耗：≥55dB(APC)</span></p>
+            </div>
+            <a href="#product-detail-5"
+              class="mt-4 inline-flex items-center text-primary hover:text-accent transition-custom font-medium lang"
+              key="viewDetails">
+              查看详情
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
           </div>
         </div>
 
-        <!-- 产品6 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+        <!-- 产品6: YXT-DJ-200C全自动注胶机 -->
+        <div class="product-item product-card-hover bg-white rounded-xl overflow-hidden shadow-lg"
+          data-category="assembling">
           <div class="relative h-64 overflow-hidden">
-            <img src="https://picsum.photos/id/165/600/400" alt="光分路器"
+            <img src="public/images/宇讯通产品（高清图）/宇讯通跳线生产设备（高像素图）/全自动点胶机.jpg" alt="YXT-DJ-200C全自动注胶机"
               class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
-              <div class="p-6">
-                <span class="bg-primary text-white text-xs font-semibold px-2.5 py-0.5 rounded">畅销产品</span>
-                <h3 class="text-xl font-bold text-white mt-2">光分路器</h3>
-              </div>
+            <div class="absolute top-4 left-4 bg-secondary text-white text-xs font-semibold px-2.5 py-0.5 rounded lang"
+              key="badgeAutomation">
+              自动化设备
             </div>
           </div>
           <div class="p-6">
-            <p class="text-gray-600 mb-4">平面光波导型光分路器，低插入损耗，高可靠性，广泛应用于FTTH等光接入网。</p>
-            <div class="flex justify-between items-center">
-              <span class="text-primary font-semibold">查看详情</span>
-              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
-                <i class="fa fa-arrow-right"></i>
-              </a>
+            <h3 class="text-xl font-bold mb-2 lang" key="product6Title">YXT-DJ-200C全自动注胶机</h3>
+            <p class="text-gray-600 mb-4 lang" key="product6Desc">
+              采用微电脑控制系统，XYZ轴日本技术，注胶速度达3600PC
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full lang"
+                key="tagAutoGluing">自动注胶</span>
+              <span class="bg-secondary/10 text-secondary text-xs px-2 py-1 rounded-full lang"
+                key="tagHighPrecision">高精度</span>
             </div>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product6Spec1">注胶量精度：±0.01g</span></p>
+              <p class="text-sm text-gray-500"><i class="fa fa-dot-circle-o text-accent mr-2"></i> <span class="lang"
+                  key="product6Spec2">适用胶水：环氧树脂、硅胶等</span></p>
+            </div>
+            <a href="#product-detail-6"
+              class="mt-4 inline-flex items-center text-primary hover:text-accent transition-custom font-medium lang"
+              key="viewDetails">
+              查看详情
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
           </div>
         </div>
       </div>
 
       <div class="text-center mt-12">
         <a href="#"
-          class="inline-flex items-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white rounded-md font-medium transition-custom">
+          class="inline-flex items-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white rounded-md font-medium transition-custom lang"
+          key="viewAllProducts">
           查看全部产品
           <i class="fa fa-long-arrow-right ml-2"></i>
         </a>
@@ -443,470 +583,208 @@
     </div>
   </section>
 
-  <!-- 解决方案 -->
-  <section id="solutions" class="py-20 bg-white">
+  <!-- 公司详细介绍及证书展示 -->
+  <section id="company-detail" class="py-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">解决方案</h2>
-        <p class="text-gray-600 max-w-3xl mx-auto text-lg">针对不同行业需求，GWF提供定制化的光纤通信解决方案，助力客户构建高效、稳定、智能的网络基础设施。</p>
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4 lang" key="companyDetailTitle">公司详细介绍及证书展示
+        </h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg lang" key="companyDetailSubtitle">
+          深入了解深圳市宇讯通光电有限公司的发展历程、企业文化以及所获得的重要证书。
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- 解决方案1 -->
-        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/180/600/800" alt="数据中心解决方案"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
-                <i class="fa fa-server text-white text-xl"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">数据中心解决方案</h3>
-            </div>
-            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              提供高密度、低损耗的光纤连接方案，优化数据中心空间利用率，支持高速数据传输，满足云计算、大数据等应用需求。
-            </p>
-            <a href="#"
-              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              了解更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 解决方案2 -->
-        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/160/600/800" alt="5G网络解决方案"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mr-4">
-                <i class="fa fa-wifi text-white text-xl"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">5G网络解决方案</h3>
-            </div>
-            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              为5G网络建设提供前传、中传和回传的光纤解决方案，支持高速率、低时延、大容量的5G通信需求。
-            </p>
-            <a href="#"
-              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              了解更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 解决方案3 -->
-        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/162/600/800" alt="FTTH光纤到户解决方案"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                <i class="fa fa-home text-white text-xl"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">FTTH光纤到户解决方案</h3>
-            </div>
-            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              提供从局端到用户端的完整FTTH解决方案，包括光线路终端、光分配网络和光网络单元，实现家庭高速宽带接入。
-            </p>
-            <a href="#"
-              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              了解更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 解决方案4 -->
-        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/165/600/800" alt="智能建筑解决方案"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
-                <i class="fa fa-building text-white text-xl"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">智能建筑解决方案</h3>
-            </div>
-            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              为智能建筑提供综合布线解决方案，支持语音、数据、视频和控制信号的传输，构建智能、高效、舒适的建筑环境。
-            </p>
-            <a href="#"
-              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              了解更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 解决方案5 -->
-        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/164/600/800" alt="工业自动化解决方案"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mr-4">
-                <i class="fa fa-cogs text-white text-xl"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">工业自动化解决方案</h3>
-            </div>
-            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              提供工业级光纤通信解决方案，满足恶劣环境下的高速数据传输需求，支持工业4.0和智能制造发展。
-            </p>
-            <a href="#"
-              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              了解更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 解决方案6 -->
-        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/161/600/800" alt="广电网络解决方案"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                <i class="fa fa-television text-white text-xl"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">广电网络解决方案</h3>
-            </div>
-            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              为广电网络提供高质量的光纤传输解决方案，支持高清视频、IPTV和数据业务的融合传输，提升用户体验。
-            </p>
-            <a href="#"
-              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              了解更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 关于我们 -->
-  <section id="about" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="relative">
-          <div class="absolute -top-4 -left-4 w-24 h-24 border-4 border-accent rounded-lg z-0"></div>
-          <div class="relative z-10">
-            <img src="https://picsum.photos/id/200/600/800" alt="公司办公环境" class="rounded-lg shadow-xl w-full h-auto">
-            <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg max-w-xs">
-              <div class="flex items-center">
-                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
-                  <i class="fa fa-trophy text-accent text-xl"></i>
-                </div>
-                <div>
-                  <p class="text-sm text-gray-600">行业领先企业</p>
-                  <p class="text-lg font-bold text-dark">10+年行业经验</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 公司详细介绍 -->
         <div>
-          <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-6">关于 GWF</h2>
-          <p class="text-gray-600 mb-6">
-            GWF成立于2010年，是一家专注于光纤通信产品研发、生产和销售的高新技术企业。公司总部位于中国深圳，在上海、北京、广州等地设有分支机构，业务覆盖全球多个国家和地区。
+          <h3 class="text-2xl font-bold mb-4 text-primary lang" key="companyDetailInfoTitle">公司详细信息</h3>
+          <p class="text-gray-600 lang" key="companyDetailInfoDesc">
+            深圳市宇讯通光电有限公司，多年来一直专注于光通信器件及设备的研发、生产和销售。公司拥有一支高素质的专业技术团队，始终坚持以创新为驱动，不断投入研发资源，在光纤研磨机、研磨夹具、光电自动化设备等领域取得了显著的技术突破，研发技术处于国内领先水平。
+
+            作为国家高新技术企业和创新型中小企业，公司获得了30多项发明及实用新型专利，这不仅是对公司技术实力的高度认可，也为公司的持续发展提供了坚实的技术保障。公司的产品覆盖全国及欧美、印度、东南亚等地区，凭借卓越的品质和良好的服务，赢得了客户的广泛赞誉。
+
+            在企业文化方面，宇讯通光电秉持“诚信、创新、合作、共赢”的价值观，致力于为客户提供高品质的光纤通信产品和解决方案。公司注重人才培养和团队建设，营造了积极向上、团结协作的工作氛围，为员工提供了广阔的发展空间。
           </p>
-          <p class="text-gray-600 mb-6">
-            作为光纤通信领域的领先企业，我们拥有一支由行业专家和技术精英组成的研发团队，致力于为客户提供高品质的光纤通信产品和解决方案。我们的产品广泛应用于数据中心、5G网络、FTTH、智能建筑、工业自动化等领域。
-          </p>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-            <div class="text-center">
-              <div class="text-4xl font-bold text-primary mb-2">100+</div>
-              <p class="text-gray-600">产品种类</p>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-primary mb-2">50+</div>
-              <p class="text-gray-600">国家地区</p>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-primary mb-2">200+</div>
-              <p class="text-gray-600">专业团队</p>
-            </div>
-            <div class="text-center">
-              <div class="text-4xl font-bold text-primary mb-2">50+</div>
-              <p class="text-gray-600">技术专利</p>
-            </div>
-          </div>
-
-          <a href="#"
-            class="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-md font-medium transition-custom shadow-lg hover:shadow-xl">
-            了解更多公司信息
-            <i class="fa fa-long-arrow-right ml-2"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 销售网络 -->
-  <section class="py-20 bg-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">全球销售网络</h2>
-        <p class="text-gray-600 max-w-3xl mx-auto text-lg">GWF的产品和服务已覆盖全球多个国家和地区，为客户提供及时、专业的技术支持和售后服务。</p>
-      </div>
-
-      <div class="bg-gray-50 rounded-2xl p-8 shadow-lg">
-        <div class="h-96 relative">
-          <canvas id="salesChart"></canvas>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 新闻动态 -->
-  <section id="news" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">新闻动态</h2>
-        <p class="text-gray-600 max-w-3xl mx-auto text-lg">了解GWF的最新产品发布、行业动态和公司新闻，把握光纤通信领域的最新趋势。</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- 新闻1 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
-          <div class="relative h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/160/600/400" alt="GWF发布新一代高速光模块"
-              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute top-4 left-4 bg-accent text-white text-xs font-semibold px-2.5 py-0.5 rounded">
-              产品发布
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center text-gray-500 text-sm mb-3">
-              <i class="fa fa-calendar-o mr-2"></i>
-              <span>2025年6月15日</span>
-            </div>
-            <h3 class="text-xl font-bold mb-3 hover:text-primary transition-custom">GWF发布新一代高速光模块，支持400G传输速率</h3>
-            <p class="text-gray-600 mb-4">GWF今日宣布推出新一代高速光模块产品，支持400G传输速率，满足数据中心日益增长的带宽需求。</p>
-            <a href="#" class="inline-flex items-center text-primary hover:text-accent transition-custom">
-              阅读更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
-          </div>
         </div>
 
-        <!-- 新闻2 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
-          <div class="relative h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/161/600/400" alt="GWF荣获行业创新奖"
-              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute top-4 left-4 bg-secondary text-white text-xs font-semibold px-2.5 py-0.5 rounded">
-              公司新闻
+        <!-- 证书展示 -->
+        <div>
+          <h3 class="text-2xl font-bold mb-4 text-primary lang" key="certificateTitle">证书展示</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- 证书1 -->
+            <div class="relative h-64 overflow-hidden rounded-xl shadow-lg">
+              <img src="public/images/高新技术企业证书.png" alt="证书1"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent">
+                <p class="text-white text-sm lang" key="certificate1Name">高新技术企业证书</p>
+              </div>
             </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center text-gray-500 text-sm mb-3">
-              <i class="fa fa-calendar-o mr-2"></i>
-              <span>2025年5月28日</span>
+            <!-- 证书2 -->
+            <div class="relative h-64 overflow-hidden rounded-xl shadow-lg">
+              <img src="public/images/实用新型专利证书1.png" alt="证书2"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent">
+                <p class="text-white text-sm lang" key="certificate1Name">实用新型专利证书</p>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-3 hover:text-primary transition-custom">GWF荣获"年度最佳创新企业"称号</h3>
-            <p class="text-gray-600 mb-4">在2025年度通信行业颁奖典礼上，GWF凭借其在光纤通信领域的创新技术和卓越产品，荣获"年度最佳创新企业"称号。</p>
-            <a href="#" class="inline-flex items-center text-primary hover:text-accent transition-custom">
-              阅读更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 新闻3 -->
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
-          <div class="relative h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/162/600/400" alt="GWF与全球知名企业达成合作"
-              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-2.5 py-0.5 rounded">
-              合作动态
+            <!-- 证书3 -->
+            <div class="relative h-64 overflow-hidden rounded-xl shadow-lg">
+              <img src="public/images/实用新型专利证书2.png" alt="证书3"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent">
+                <p class="text-white text-sm lang" key="certificate1Name">实用新型专利证书</p>
+              </div>
             </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center text-gray-500 text-sm mb-3">
-              <i class="fa fa-calendar-o mr-2"></i>
-              <span>2025年4月10日</span>
+            <!-- 证书4 -->
+            <div class="relative h-64 overflow-hidden rounded-xl shadow-lg">
+              <img src="public/images/发明专利.png" alt="证书4"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent">
+                <p class="text-white text-sm lang" key="certificate2Name">发明专利</p>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-3 hover:text-primary transition-custom">GWF与全球知名数据中心运营商达成战略合作</h3>
-            <p class="text-gray-600 mb-4">GWF今日宣布与全球知名数据中心运营商达成战略合作，为其提供高性能光纤连接解决方案，支持其全球数据中心网络升级。</p>
-            <a href="#" class="inline-flex items-center text-primary hover:text-accent transition-custom">
-              阅读更多
-              <i class="fa fa-angle-right ml-2"></i>
-            </a>
+            <!-- 可以继续添加更多证书 -->
           </div>
         </div>
-      </div>
-
-      <div class="text-center mt-12">
-        <a href="#"
-          class="inline-flex items-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white rounded-md font-medium transition-custom">
-          查看全部新闻
-          <i class="fa fa-long-arrow-right ml-2"></i>
-        </a>
       </div>
     </div>
   </section>
 
   <!-- 联系我们 -->
-  <section id="contact" class="py-20 bg-white">
+  <section id="contact" class="py-20 bg-primary/5">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div>
-          <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-6">联系我们</h2>
-          <p class="text-gray-600 mb-8">
-            如果您对我们的产品或服务有任何疑问，或需要了解更多信息，请随时与我们联系。我们的专业团队将为您提供详细的咨询和支持。
-          </p>
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4 lang" key="contactTitle">联系我们</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg lang" key="contactSubtitle">
+          欢迎咨询光纤通信设备相关问题，我们将为您提供专业的解决方案
+        </p>
+      </div>
 
-          <div class="space-y-6">
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fa fa-map-marker text-primary text-xl"></i>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <form class="bg-white p-8 rounded-xl shadow-lg">
+            <h3 class="text-2xl font-bold mb-6 text-primary lang" key="sendInquiry">发送咨询</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1 lang" key="yourName">姓名</label>
+                <input type="text" id="name" name="name"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-custom"
+                  placeholder="请输入您的姓名">
               </div>
               <div>
-                <h3 class="text-lg font-semibold mb-1">总部地址</h3>
-                <p class="text-gray-600">广东省深圳市南山区科技园南区科技南十二路8号中电长城大厦15层</p>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1 lang" key="yourEmail">邮箱</label>
+                <input type="email" id="email" name="email"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-custom"
+                  placeholder="请输入您的邮箱">
               </div>
             </div>
-
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fa fa-phone text-primary text-xl"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold mb-1">联系电话</h3>
-                <p class="text-gray-600">+86 755-88888888</p>
-                <p class="text-gray-600">+86 755-88888889</p>
-              </div>
+            <div class="mb-6">
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1 lang" key="yourPhone">电话</label>
+              <input type="tel" id="phone" name="phone"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-custom"
+                placeholder="请输入您的电话">
             </div>
-
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fa fa-envelope text-primary text-xl"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold mb-1">电子邮箱</h3>
-                <p class="text-gray-600">info@szgwf.com</p>
-                <p class="text-gray-600">support@szgwf.com</p>
-              </div>
+            <div class="mb-6">
+              <label for="subject" class="block text-sm font-medium text-gray-700 mb-1 lang"
+                key="inquirySubject">主题</label>
+              <input type="text" id="subject" name="subject"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-custom"
+                placeholder="请输入咨询主题">
             </div>
-
-            <div class="flex items-start">
-              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fa fa-clock-o text-primary text-xl"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold mb-1">工作时间</h3>
-                <p class="text-gray-600">周一至周五: 9:00 - 18:00</p>
-                <p class="text-gray-600">周六至周日: 休息</p>
-              </div>
+            <div class="mb-6">
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1 lang"
+                key="inquiryMessage">留言内容</label>
+              <textarea id="message" name="message" rows="5"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-custom"
+                placeholder="请输入您的留言内容"></textarea>
             </div>
-          </div>
-
-          <div class="mt-8">
-            <h3 class="text-lg font-semibold mb-4">关注我们</h3>
-            <div class="flex space-x-4">
-              <a href="#"
-                class="w-10 h-10 bg-primary/10 hover:bg-primary/20 text-primary rounded-full flex items-center justify-center transition-custom">
-                <i class="fa fa-weixin"></i>
-              </a>
-              <a href="#"
-                class="w-10 h-10 bg-primary/10 hover:bg-primary/20 text-primary rounded-full flex items-center justify-center transition-custom">
-                <i class="fa fa-weibo"></i>
-              </a>
-              <a href="#"
-                class="w-10 h-10 bg-primary/10 hover:bg-primary/20 text-primary rounded-full flex items-center justify-center transition-custom">
-                <i class="fa fa-linkedin"></i>
-              </a>
-              <a href="#"
-                class="w-10 h-10 bg-primary/10 hover:bg-primary/20 text-primary rounded-full flex items-center justify-center transition-custom">
-                <i class="fa fa-youtube-play"></i>
-              </a>
-            </div>
-          </div>
+            <button type="submit"
+              class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-md transition-custom shadow-md hover:shadow-lg lang"
+              key="submitInquiry">
+              提交咨询
+            </button>
+          </form>
         </div>
 
         <div>
-          <div class="bg-gray-50 rounded-xl p-8 shadow-lg">
-            <h3 class="text-xl font-bold mb-6">发送询价</h3>
-            <form id="contact-form">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
-                  <input type="text" id="name" name="name"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom"
-                    placeholder="请输入您的姓名" required="">
+          <div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+            <h3 class="text-2xl font-bold mb-6 text-primary lang" key="contactInfo">联系方式</h3>
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                  <i class="fa fa-map-marker text-primary"></i>
                 </div>
                 <div>
-                  <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
-                  <input type="email" id="email" name="email"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom"
-                    placeholder="请输入您的邮箱" required="">
+                  <h4 class="text-lg font-semibold mb-1 lang" key="address">地址</h4>
+                  <p class="text-gray-600">
+                    深圳市宝安区福永街道凤凰兴业三路3号美盈(凤凰)智汇创新园A7栋405
+                  </p>
                 </div>
               </div>
-
-              <div class="mb-6">
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">电话</label>
-                <input type="tel" id="phone" name="phone"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom"
-                  placeholder="请输入您的电话">
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                  <i class="fa fa-phone text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-1 lang" key="phone">电话</h4>
+                  <p class="text-gray-600">
+                    0755-27915969 || 13682350300(李红斌) || 13538127289(易玉辉)
+                  </p>
+                </div>
               </div>
-
-              <div class="mb-6">
-                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">主题</label>
-                <select id="subject" name="subject"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom">
-                  <option value="">请选择咨询主题</option>
-                  <option value="product">产品咨询</option>
-                  <option value="solution">解决方案咨询</option>
-                  <option value="support">技术支持</option>
-                  <option value="partnership">合作洽谈</option>
-                  <option value="other">其他问题</option>
-                </select>
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                  <i class="fa fa-envelope text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-1 lang" key="email">邮箱</h4>
+                  <p class="text-gray-600">
+                    szyxtgd@163.com
+                  </p>
+                </div>
               </div>
-
-              <div class="mb-6">
-                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">留言内容</label>
-                <textarea id="message" name="message" rows="5"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom"
-                  placeholder="请输入您的留言内容" required=""></textarea>
+              <div class="flex items-start">
+                <div
+                  class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                  <i class="fa fa-clock-o text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-1 lang" key="workingHours">工作时间</h4>
+                  <p class="text-gray-600">
+                    周一至周五: 9:00 - 18:00
+                  </p>
+                </div>
               </div>
+            </div>
+          </div>
 
-              <div class="flex items-center mb-6">
-                <input type="checkbox" id="privacy" name="privacy"
-                  class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" required="">
-                <label for="privacy" class="ml-2 block text-sm text-gray-600">
-                  我同意根据<a href="#" class="text-primary hover:underline">隐私政策</a>处理我的个人信息
-                </label>
-              </div>
-
-              <button type="submit"
-                class="w-full bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
-                发送信息
-              </button>
-            </form>
+          <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h3 class="text-2xl font-bold mb-6 text-primary lang" key="followUs">关注我们</h3>
+            <div class="flex space-x-4">
+              <a href="#"
+                class="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center text-primary transition-custom">
+                <i class="fa fa-weixin text-xl"></i>
+              </a>
+              <a href="#"
+                class="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center text-primary transition-custom">
+                <i class="fa fa-weibo text-xl"></i>
+              </a>
+              <a href="#"
+                class="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center text-primary transition-custom">
+                <i class="fa fa-linkedin text-xl"></i>
+              </a>
+              <a href="#"
+                class="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center text-primary transition-custom">
+                <i class="fa fa-youtube-play text-xl"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -914,89 +792,97 @@
   </section>
 
   <!-- 页脚 -->
-  <footer class="bg-dark text-white pt-16 pb-8">
+  <footer class="bg-primary text-white pt-16 pb-8">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <div>
           <div class="flex items-center mb-6">
             <i class="fa fa-connectdevelop text-3xl mr-2"></i>
-            <span class="text-xl font-bold">GWF</span>
+            <span class="text-xl font-bold lang" key="companyName">宇讯通光电</span>
           </div>
-          <p class="text-gray-400 mb-6">
-            GWF是一家专注于光纤通信产品研发、生产和销售的高新技术企业，为全球客户提供高品质的光纤通信解决方案。
+          <p class="text-white/70 mb-6 lang" key="companyIntro">
+            专业从事光通信器件及设备研发、生产和销售的高新技术企业，为全球客户提供优质的光纤通信解决方案。
           </p>
           <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-custom">
-              <i class="fa fa-weixin text-lg"></i>
+            <a href="#" class="text-white/70 hover:text-white transition-custom">
+              <i class="fa fa-weixin text-xl"></i>
             </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-custom">
-              <i class="fa fa-weibo text-lg"></i>
+            <a href="#" class="text-white/70 hover:text-white transition-custom">
+              <i class="fa fa-weibo text-xl"></i>
             </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-custom">
-              <i class="fa fa-linkedin text-lg"></i>
+            <a href="#" class="text-white/70 hover:text-white transition-custom">
+              <i class="fa fa-linkedin text-xl"></i>
             </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-custom">
-              <i class="fa fa-youtube-play text-lg"></i>
+            <a href="#" class="text-white/70 hover:text-white transition-custom">
+              <i class="fa fa-youtube-play text-xl"></i>
             </a>
           </div>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+          <h4 class="text-lg font-semibold mb-6 lang" key="productCenter">产品中心</h4>
           <ul class="space-y-3">
-            <li><a href="#home" class="text-gray-400 hover:text-white transition-custom">首页</a></li>
-            <li><a href="#products" class="text-gray-400 hover:text-white transition-custom">产品中心</a></li>
-            <li><a href="#solutions" class="text-gray-400 hover:text-white transition-custom">解决方案</a></li>
-            <li><a href="#about" class="text-gray-400 hover:text-white transition-custom">关于我们</a></li>
-            <li><a href="#news" class="text-gray-400 hover:text-white transition-custom">新闻动态</a></li>
-            <li><a href="#contact" class="text-gray-400 hover:text-white transition-custom">联系我们</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang"
+                key="productCategory1">光纤研磨设备</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang"
+                key="productCategory2">光纤组装设备</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang"
+                key="productCategory3">光纤检测设备</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang"
+                key="productCategory4">光通信器件</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang"
+                key="productCategory5">光纤工具</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-6">产品中心</h3>
+          <h4 class="text-lg font-semibold mb-6 lang" key="aboutUs">关于我们</h4>
           <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光纤连接器</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光模块</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光纤跳线</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">配线架</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光衰减器</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光分路器</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang" key="aboutItem1">公司简介</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang" key="aboutItem2">企业文化</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang" key="aboutItem3">技术实力</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang" key="aboutItem4">生产基地</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-custom lang" key="aboutItem5">新闻动态</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-6">联系我们</h3>
+          <h4 class="text-lg font-semibold mb-6 lang" key="contactUs">联系我们</h4>
           <ul class="space-y-3">
             <li class="flex items-start">
-              <i class="fa fa-map-marker text-accent mt-1 mr-3"></i>
-              <span class="text-gray-400">广东省深圳市</span>
+              <i class="fa fa-map-marker mt-1 mr-3 text-white/70"></i>
+              <span class="text-white/70">深圳市宝安区福永街道凤凰兴业三路3号美盈(凤凰)智汇创新园A7栋405</span>
             </li>
-            <li class="flex items-start">
-              <i class="fa fa-phone text-accent mt-1 mr-3"></i>
-              <span class="text-gray-400">+86 755-88888888</span>
+            <li class="flex items-center">
+              <i class="fa fa-phone mr-3 text-white/70"></i>
+              <span class="text-white/70">0755-27915969</span>
             </li>
-            <li class="flex items-start">
-              <i class="fa fa-envelope text-accent mt-1 mr-3"></i>
-              <span class="text-gray-400">info@GWF.com</span>
+            <li class="flex items-center">
+              <i class="fa fa-phone mr-3 text-white/70"></i>
+              <span class="text-white/70">13682350300(李红斌)</span>
             </li>
-            <li class="flex items-start">
-              <i class="fa fa-clock-o text-accent mt-1 mr-3"></i>
-              <span class="text-gray-400">周一至周五: 9:00 - 18:00</span>
+            <li class="flex items-center">
+              <i class="fa fa-phone mr-3 text-white/70"></i>
+              <span class="text-white/70">13538127289(易玉辉)</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-envelope mr-3 text-white/70"></i>
+              <span class="text-white/70">szyxtgd@163.com</span>
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="border-t border-gray-800 pt-8">
+      <div class="border-t border-white/10 pt-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-500 text-sm mb-4 md:mb-0">
-            © 2025 GWF. 保留所有权利.
+          <p class="text-white/50 text-sm mb-4 md:mb-0">
+            © 2025 深圳市宇讯通光电有限公司 版权所有 | 粤ICP备XXXXXXXX号
           </p>
           <div class="flex space-x-6">
-            <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">隐私政策</a>
-            <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">使用条款</a>
-            <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">网站地图</a>
+            <a href="#" class="text-white/50 hover:text-white text-sm transition-custom lang"
+              key="privacyPolicy">隐私政策</a>
+            <a href="#" class="text-white/50 hover:text-white text-sm transition-custom lang" key="termsOfUse">使用条款</a>
+            <a href="#" class="text-white/50 hover:text-white text-sm transition-custom lang" key="sitemap">网站地图</a>
           </div>
         </div>
       </div>
@@ -1005,7 +891,7 @@
 
   <!-- 返回顶部按钮 -->
   <button id="back-to-top"
-    class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+    class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-accent">
     <i class="fa fa-angle-up text-xl"></i>
   </button>
 
@@ -1013,38 +899,22 @@
   <script>
     // 导航栏滚动效果
     const navbar = document.getElementById('navbar');
-    const backToTopBtn = document.getElementById('back-to-top');
-
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
-        navbar.classList.add('bg-primary');
-        navbar.classList.remove('bg-primary/95');
-        navbar.classList.add('shadow-md');
-
-        backToTopBtn.classList.remove('opacity-0', 'invisible');
-        backToTopBtn.classList.add('opacity-100', 'visible');
+        navbar.classList.add('bg-primary', 'shadow-lg');
+        navbar.classList.remove('bg-transparent');
       } else {
-        navbar.classList.remove('bg-primary');
-        navbar.classList.add('bg-primary/95');
-        navbar.classList.remove('shadow-md');
-
-        backToTopBtn.classList.add('opacity-0', 'invisible');
-        backToTopBtn.classList.remove('opacity-100', 'visible');
+        navbar.classList.remove('bg-primary', 'shadow-lg');
+        navbar.classList.add('bg-transparent');
       }
     });
 
-    // 移动端菜单切换
+    // 移动端菜单
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    mobileMenuButton.addEventListener('click', function () {
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-        mobileMenuButton.innerHTML = '<span class="sr-only">关闭主菜单</span><i class="fa fa-times text-xl"></i>';
-      } else {
-        mobileMenu.classList.add('hidden');
-        mobileMenuButton.innerHTML = '<span class="sr-only">打开主菜单</span><i class="fa fa-bars text-xl"></i>';
-      }
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
 
     // 平滑滚动
@@ -1053,9 +923,8 @@
         e.preventDefault();
 
         const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-
         const targetElement = document.querySelector(targetId);
+
         if (targetElement) {
           window.scrollTo({
             top: targetElement.offsetTop - 80,
@@ -1065,155 +934,385 @@
           // 关闭移动菜单
           if (!mobileMenu.classList.contains('hidden')) {
             mobileMenu.classList.add('hidden');
-            mobileMenuButton.innerHTML = '<span class="sr-only">打开主菜单</span><i class="fa fa-bars text-xl"></i>';
           }
         }
       });
     });
 
     // 返回顶部按钮
-    backToTopBtn.addEventListener('click', function () {
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     });
 
-    // 轮播图
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const indicators = document.querySelectorAll('.carousel-indicator');
-    const prevBtn = document.getElementById('prev-slide');
-    const nextBtn = document.getElementById('next-slide');
-    let currentSlide = 0;
-    let slideInterval;
+    // 产品筛选
+    const productTabs = document.querySelectorAll('.product-tab');
+    const productItems = document.querySelectorAll('.product-item');
 
-    function showSlide(index) {
-      // 隐藏所有轮播项
-      carouselItems.forEach(item => {
-        item.classList.remove('active');
-        item.style.opacity = '0';
-      });
+    productTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // 移除所有标签的活跃状态
+        productTabs.forEach(t => {
+          t.classList.remove('bg-primary', 'text-white');
+          t.classList.add('bg-gray-200', 'text-gray-700');
+        });
 
-      // 移除所有指示器的活动状态
-      indicators.forEach(indicator => {
-        indicator.classList.remove('active');
-      });
+        // 添加当前标签的活跃状态
+        tab.classList.remove('bg-gray-200', 'text-gray-700');
+        tab.classList.add('bg-primary', 'text-white');
 
-      // 显示当前轮播项
-      carouselItems[index].classList.add('active');
-      setTimeout(() => {
-        carouselItems[index].style.opacity = '1';
-      }, 50);
+        const category = tab.getAttribute('data-category');
 
-      // 设置当前指示器为活动状态
-      indicators[index].classList.add('active');
-
-      currentSlide = index;
-    }
-
-    function nextSlide() {
-      let next = currentSlide + 1;
-      if (next >= carouselItems.length) {
-        next = 0;
-      }
-      showSlide(next);
-    }
-
-    function prevSlide() {
-      let prev = currentSlide - 1;
-      if (prev < 0) {
-        prev = carouselItems.length - 1;
-      }
-      showSlide(prev);
-    }
-
-    // 初始化轮播图
-    showSlide(0);
-
-    // 自动轮播
-    function startSlideInterval() {
-      slideInterval = setInterval(nextSlide, 5000);
-    }
-
-    startSlideInterval();
-
-    // 轮播图控制
-    prevBtn.addEventListener('click', function () {
-      clearInterval(slideInterval);
-      prevSlide();
-      startSlideInterval();
-    });
-
-    nextBtn.addEventListener('click', function () {
-      clearInterval(slideInterval);
-      nextSlide();
-      startSlideInterval();
-    });
-
-    // 指示器点击事件
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', function () {
-        clearInterval(slideInterval);
-        showSlide(index);
-        startSlideInterval();
+        // 筛选产品
+        productItems.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
       });
     });
 
-    // 销售数据图表
-    const ctx = document.getElementById('salesChart').getContext('2d');
-    const salesChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['北美', '欧洲', '亚太', '中东', '非洲', '拉丁美洲'],
-        datasets: [{
-          label: '2024年销售额 (百万美元)',
-          data: [120, 95, 140, 35, 25, 40],
-          backgroundColor: '#0A2463',
-          borderRadius: 6
-        }, {
-          label: '2025年销售额 (百万美元)',
-          data: [150, 110, 180, 45, 35, 55],
-          backgroundColor: '#3E92CC',
-          borderRadius: 6
-        }]
+    // 语言切换功能
+    const languageToggle = document.getElementById('language-toggle');
+    const languageDropdown = document.getElementById('language-dropdown');
+    const languageOptions = document.querySelectorAll('.language-option');
+
+    // 语言数据
+    const translations = {
+      zh: {
+        companyName: "宇讯通光电",
+        navHome: "首页",
+        navAbout: "公司简介",
+        navProducts: "产品中心",
+        navCompanyDetail: "公司详情",
+        navContact: "联系我们",
+        currentLang: "中文",
+        heroTitle: "专业光纤通信设备制造商",
+        heroSubtitle: "22年光纤连接器生产经验 | 15年设备制造经验 | 30+项专利技术",
+        heroButton1: "浏览产品",
+        heroButton2: "联系我们",
+        aboutTitle: "公司简介",
+        aboutSubtitle: "深圳市宇讯通光电有限公司是光通信器件及设备研发、生产和销售的专业供应商",
+        aboutAdvantages: "企业核心优势",
+        advantage1Title: "技术研发",
+        advantage1Desc: "拥有专业技术团队，在光纤研磨机、研磨夹具、光电自动化设备等研发技术上处于国内领先水平",
+        advantage2Title: "资质认证",
+        advantage2Desc: "国家高新技术企业、创新型中小企业，获30多项发明及实用新型专利",
+        advantage3Title: "全球市场",
+        advantage3Desc: "产品覆盖全国及欧美、印度、东南亚等地区",
+        stat1: "光纤连接器生产经验",
+        stat2: "设备制造经验",
+        stat3: "专利技术",
+        stat4: "销售网络",
+        companyAward1: "高新技术企业",
+        companyAward2: "创新型中小企业",
+        productsTitle: "产品中心",
+        serviceAdvantages: "我们的服务优势",
+        serviceAdvantagesDesc: "专业的技术研发、完善的质量保证、个性化的定制服务和专业的客户支持，为客户提供一站式的解决方案。",
+        innovation: "创新技术",
+        innovationDesc: "我们拥有一支高素质的研发团队，持续投入研发，不断推出创新产品，满足客户不断变化的需求。",
+        quality: "品质保证",
+        qualityDesc: "严格的质量控制体系，所有产品均通过多重测试，确保产品性能稳定可靠，符合国际标准。",
+        customizedService: "定制服务",
+        customizedServiceDesc: "根据客户的特定需求，提供个性化的解决方案和定制产品，为客户创造更大价值。",
+        professionalSupport: "专业支持",
+        professionalSupportDesc: "7×24小时技术支持团队，快速响应客户需求，为客户提供全方位的技术支持和售后服务。",
+        categoryAll: "全部产品",
+        categoryPolishing: "研磨设备",
+        categoryAssembling: "组装设备",
+        categoryTesting: "检测设备",
+        categoryAccessories: "插芯设备",
+        categoryComponents: "光通信器件",
+        badgeHot: "热销产品",
+        badgeNew: "新品上市",
+        badgeCore: "核心产品",
+        badgeBestSeller: "畅销产品",
+        badgeBasicComponent: "基础器件",
+        badgeAutomation: "自动化设备",
+        product1Title: "FPM-1000A调速光纤研磨机",
+        product1Desc: "四角加压设计，可加工FC/SC/ST/LC等标准光纤连接器，适用于PC及APC产品大批量生产",
+        product1Spec1: "加工能力：SC:36 Max / LC:50 Max",
+        product1Spec2: "转速可调：0-150转/分钟",
+        product2Title: "YXT-SCYJ-01全自动陶瓷插芯压接机",
+        product2Desc: "具备自动送料、方向识别、压合及成品输出功能，提升插芯压接效率与精度，降低劳动强度",
+        product2Spec1: "压配规格·：SC-250-D(42.499±0.0005mmX10.5mm)",
+        product2Spec2: "生产效率：5000-6500pcs/小时",
+        product3Title: "一体式光纤端面检测仪",
+        product3Desc: "可将光纤端面放大200/400/800倍，快速检测脏污、划痕等不良，保障光纤连接质量",
+        product3Spec1: "放大倍数：200X/400X/800X",
+        product3Spec2: "显示屏：8英寸TFT",
+        product4Title: "YXT-RBJ-10多芯光纤热剥机",
+        product4Desc: "可一次性剥除1-12根光纤缓冲层，直达125μm包层，适用于多种紧包光缆",
+        product4Spec1: "剥离范围：900μm→125μm",
+        product4Spec2: "剥除一致性：±1μm",
+        product5Title: "SC/FC/LC陶瓷插芯",
+        product5Desc: "高精度陶瓷材质，低插入损耗，高回波损耗，适配各类光纤连接器",
+        product5Spec1: "插入损耗：≤0.1dB",
+        product5Spec2: "回波损耗：≥55dB(APC)",
+        product6Title: "YXT-DJ-200C全自动注胶机",
+        product6Desc: "采用微电脑控制系统，XYZ轴日本技术，注胶速度达3600PC",
+        product6Spec1: "注胶量精度：±0.01g",
+        product6Spec2: "适用胶水：环氧树脂、硅胶等",
+        tagPolishing: "光纤研磨",
+        tagHighPrecision: "高精度",
+        tagAutoCrimping: "自动压接",
+        tagCeramicFerrule: "陶瓷插芯",
+        tagEndfaceInspection: "端面检测",
+        tagHighDefZoom: "高清放大",
+        tagFiberStripping: "光纤剥除",
+        tagMultiCore: "多芯处理",
+        tagCeramicMaterial: "陶瓷材质",
+        tagLowLoss: "低损耗",
+        tagAutoGluing: "自动注胶",
+        viewDetails: "查看详情",
+        viewAllProducts: "查看全部产品",
+        companyDetailTitle: "公司详细介绍及证书展示",
+        companyDetailSubtitle: "深入了解深圳市宇讯通光电有限公司的发展历程、企业文化以及所获得的重要证书。",
+        companyDetailInfoTitle: "公司详细介绍",
+        companyDetailInfoDesc: "深圳市宇讯通光电有限公司，多年来一直专注于光通信器件及设备的研发、生产和销售。公司拥有一支高素质的专业技术团队，始终坚持以创新为驱动，不断投入研发资源，在光纤研磨机、研磨夹具、光电自动化设备等领域取得了显著的技术突破，研发技术处于国内领先水平。作为国家高新技术企业和创新型中小企业，公司获得了30多项发明及实用新型专利，这不仅是对公司技术实力的高度认可，也为公司的持续发展提供了坚实的技术保障。公司的产品覆盖全国及欧美、印度、东南亚等地区，凭借卓越的品质和良好的服务，赢得了客户的广泛赞誉。在企业文化方面，宇讯通光电秉持“诚信、创新、合作、共赢”的价值观，致力于为客户提供高品质的光纤通信产品和解决方案。公司注重人才培养和团队建设，营造了积极向上、团结协作的工作氛围，为员工提供了广阔的发展空间。",
+        certificateTitle: "公司证书展示",
+        contactTitle: "联系我们",
+        contactSubtitle: "欢迎咨询光纤通信设备相关问题，我们将为您提供专业的解决方案",
+        sendInquiry: "发送咨询",
+        yourName: "姓名",
+        yourEmail: "邮箱",
+        yourPhone: "电话",
+        inquirySubject: "主题",
+        inquiryMessage: "留言内容",
+        submitInquiry: "提交咨询",
+        contactInfo: "联系方式",
+        address: "地址",
+        phone: "电话",
+        email: "邮箱",
+        workingHours: "工作时间",
+        followUs: "关注我们",
+        productCenter: "产品中心",
+        productCategory1: "光纤研磨设备",
+        productCategory2: "光纤组装设备",
+        productCategory3: "光纤检测设备",
+        productCategory4: "光通信器件",
+        productCategory5: "光纤工具",
+        aboutUs: "关于我们",
+        aboutItem1: "公司简介",
+        aboutItem2: "企业文化",
+        aboutItem3: "技术实力",
+        aboutItem4: "生产基地",
+        aboutItem5: "新闻动态",
+        contactUs: "联系我们",
+        companyIntro: "专业从事光通信器件及设备研发、生产和销售的高新技术企业，为全球客户提供优质的光纤通信解决方案。",
+        privacyPolicy: "隐私政策",
+        termsOfUse: "使用条款",
+        sitemap: "网站地图"
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: '全球销售分布'
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: '销售额 (百万美元)'
-            }
-          }
-        }
+      en: {
+        companyName: "Shenzhen Yuxuntong Photoelectricity Co., Ltd.",
+        navHome: "Home",
+        navAbout: "About Us",
+        navProducts: "Products",
+        navCompanyDetail: "Company Detail",
+        navContact: "Contact",
+        currentLang: "English",
+        heroTitle: "Professional Fiber Optic Communication Equipment Manufacturer",
+        heroSubtitle: "22 Years of Fiber Optic Connector Production Experience | 15 Years of Equipment Manufacturing Experience | 30+ Patented Technologies",
+        heroButton1: "Browse Products",
+        heroButton2: "Contact Us",
+        aboutTitle: "Company Profile",
+        aboutSubtitle: "Shenzhen Yu Xun Tong Photoelectricity Co., Ltd. is a professional supplier of R&D, production and sales of optical communication devices and equipment",
+        aboutAdvantages: "Core Advantages",
+        advantage1Title: "Technology R&D",
+        advantage1Desc: "We have a professional technical team and are at the leading level in China in the R&D technologies of fiber optic grinding machines, grinding fixtures, and optoelectronic automation equipment",
+        advantage2Title: "Qualifications & Certifications",
+        advantage2Desc: "National High-tech Enterprise, Innovative Small and Medium-sized Enterprise, with more than 30 invention and utility model patents",
+        advantage3Title: "Global Market",
+        advantage3Desc: "Our products cover the whole country and regions such as Europe, America, India, and Southeast Asia",
+        stat1: "Fiber Optic Connector Production Experience",
+        stat2: "Equipment Manufacturing Experience",
+        stat3: "Patented Technologies",
+        stat4: "Global Sales Network",
+        companyAward1: "High-tech Enterprise",
+        companyAward2: "Innovative Small and Medium-sized Enterprise",
+        productsTitle: "Product Center",
+        serviceAdvantages: "Our Service Advantages",
+        serviceAdvantagesDesc: "Professional technical R&D, perfect quality assurance, personalized customization services, and professional customer support to provide customers with one-stop solutions.",
+        innovation: "Innovative Technology",
+        innovationDesc: "We have a high-quality R&D team that continuously invests in research and development, constantly launches innovative products to meet the ever-changing needs of customers.",
+        quality: "Quality Assurance",
+        qualityDesc: "A strict quality control system ensures that all products pass multiple tests, guaranteeing stable and reliable performance that meets international standards.",
+        customizedService: "Customized Service",
+        customizedServiceDesc: "Provide personalized solutions and customized products based on customers' specific needs to create greater value for them.",
+        professionalSupport: "Professional Support",
+        professionalSupportDesc: "A 24/7 technical support team responds quickly to customer needs, providing comprehensive technical support and after-sales service.",
+        productsSubtitle: "We provide a full range of products including fiber optic polishing, assembly, testing equipment and optical communication components",
+        categoryAll: "All Products",
+        categoryPolishing: "Polishing Equipment",
+        categoryAssembling: "Assembly Equipment",
+        categoryTesting: "Testing Equipment",
+        categoryAccessories: "Ferrule Equipment",
+        categoryComponents: "Optical Communication Components",
+        badgeHot: "Hot Products",
+        badgeNew: "New Arrival",
+        badgeCore: "Core Products",
+        badgeBestSeller: "Best Seller",
+        badgeBasicComponent: "Basic Components",
+        badgeAutomation: "Automation Equipment",
+        product1Title: "FPM-1000A Speed-adjustable Fiber Optic Polishing Machine",
+        product1Desc: "Four-corner pressure design, capable of processing standard fiber optic connectors such as FC/SC/ST/LC, suitable for mass production of PC and APC products",
+        product1Spec1: "Processing Capacity: SC: 36 Max / LC: 50 Max",
+        product1Spec2: "Adjustable Speed: 0-150 RPM",
+        product2Title: "YXT-SCYJ-01 Fully Automatic Ceramic Ferrule Crimping Machine",
+        product2Desc: "Equipped with automatic feeding, direction recognition, pressing and finished product output functions, improving the efficiency and accuracy of ferrule crimping and reducing labor intensity",
+        product2Spec1: "Press-fit specification: SC-250-D(42.499±0.0005mmX10.5mm)",
+        product2Spec2: "Production Efficiency: 5000-6500pcs/hour",
+        product3Title: "Integrated Fiber Optic Endface Inspection仪",
+        product3Desc: "Can magnify the fiber optic endface by 200/400/800 times, quickly detect defects such as dirt and scratches, and ensure the quality of fiber optic connections",
+        product3Spec1: "Magnification: 200X/400X/800X",
+        product3Spec2: "Display: 8-inch TFT",
+        product4Title: "YXT-RBJ-10 Multi-core Fiber Optic Thermal Stripper",
+        product4Desc: "Can strip the buffer layer of 1-12 fibers at one time, reaching the 125μm cladding, suitable for a variety of tight-buffered optical cables",
+        product4Spec1: "Stripping Range: 900μm→125μm",
+        product4Spec2: "Stripping Consistency: ±1μm",
+        product5Title: "SC/FC/LC Ceramic Ferrules",
+        product5Desc: "High-precision ceramic material, low insertion loss, high return loss, suitable for various fiber optic connectors",
+        product5Spec1: "Insertion Loss: ≤0.1dB",
+        product5Spec2: "Return Loss: ≥55dB(APC)",
+        product6Title: "YXT-DJ-200C Fully Automatic Glue Dispensing Machine",
+        product6Desc: "Adopts microcomputer control system, Japanese technology for XYZ axes, glue dispensing speed up to 3600PC",
+        product6Spec1: "Glue Dispensing Accuracy: ±0.01g",
+        product6Spec2: "Applicable Glues: Epoxy Resin, Silicone, etc.",
+        tagPolishing: "Fiber Optic Polishing",
+        tagHighPrecision: "High Precision",
+        tagAutoCrimping: "Automatic Crimping",
+        tagCeramicFerrule: "Ceramic Ferrule",
+        tagEndfaceInspection: "Endface Inspection",
+        tagHighDefZoom: "High-definition Zoom",
+        tagFiberStripping: "Fiber Optic Stripping",
+        tagMultiCore: "Multi-core Processing",
+        tagCeramicMaterial: "Ceramic Material",
+        tagLowLoss: "Low Loss",
+        tagAutoGluing: "Automatic Glue Dispensing",
+        viewDetails: "View Details",
+        viewAllProducts: "View All Products",
+        companyDetailTitle: "Company details and certificate display",
+        companyDetailSubtitle: "In-depth understanding of the development history, corporate culture and important certificates obtained by Shenzhen Yuxun Photoelectricity Co., Ltd",
+        companyDetailInfoTitle: "Company details",
+        companyDetailInfoDesc: "Shenzhen Yuxuntong Optoelectronics Co., Ltd. has been focusing on the research and development, production and sales of optical communication devices and equipment for many years. The company has a high-quality professional and technical team, always adhere to innovation-driven, constantly invest in research and development resources, and has made significant technological breakthroughs in the fields of optical fiber grinding machines, grinding fixtures, optoelectronic automation equipment, etc., and the research and development technology is at the leading level in China. As a national high-tech enterprise and innovative small and medium-sized enterprise, the company has obtained more than 30 invention and utility model patents, which is not only a high recognition of the company's technical strength, but also provides a solid technical guarantee for the company's sustainable development. The company's products cover the whole country and Europe, America, India, Southeast Asia and other regions, with excellent quality and good service, has won wide praise from customers. In terms of corporate culture, Yuxun Optoelectronics adheres to the values of \"integrity, innovation, cooperation, and win-win\", and is committed to providing customers with high-quality optical fiber communication products and solutions. The company pays attention to talent training and team building, creates a positive, united and cooperative working atmosphere, and provides employees with a broad space for development.",
+        certificateTitle: "Company certificates",
+        contactTitle: "Contact Us",
+        contactSubtitle: "Welcome to consult us about fiber optic communication equipment. We will provide you with professional solutions.",
+        sendInquiry: "Send Inquiry",
+        yourName: "Name",
+        yourEmail: "Email",
+        yourPhone: "Phone",
+        inquirySubject: "Subject",
+        inquiryMessage: "Message",
+        submitInquiry: "Submit Inquiry",
+        contactInfo: "Contact Information",
+        address: "Address",
+        phone: "Phone",
+        email: "Email",
+        workingHours: "Working Hours",
+        followUs: "Follow Us",
+        productCenter: "Product Center",
+        productCategory1: "Fiber Optic Polishing Equipment",
+        productCategory2: "Fiber Optic Assembly Equipment",
+        productCategory3: "Fiber Optic Testing Equipment",
+        productCategory4: "Optical Communication Components",
+        productCategory5: "Fiber Optic Tools",
+        aboutUs: "About Us",
+        aboutItem1: "Company Profile",
+        aboutItem2: "Corporate Culture",
+        aboutItem3: "Technical Strength",
+        aboutItem4: "Production Base",
+        aboutItem5: "News & Events",
+        contactUs: "Contact Us",
+        companyIntro: "A high-tech enterprise specializing in the R&D, production and sales of optical communication devices and equipment, providing high-quality fiber optic communication solutions for global customers.",
+        privacyPolicy: "Privacy Policy",
+        termsOfUse: "Terms of Use",
+        sitemap: "Site Map"
+      }
+    };
+
+    // 语言下拉菜单切换
+    languageToggle.addEventListener('click', () => {
+      languageDropdown.classList.toggle('hidden');
+    });
+
+    // 点击页面其他区域关闭下拉菜单
+    document.addEventListener('click', (e) => {
+      if (!languageToggle.contains(e.target) && !languageDropdown.contains(e.target)) {
+        languageDropdown.classList.add('hidden');
       }
     });
 
-    // 表单提交
-    const contactForm = document.getElementById('contact-form');
-
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // 这里可以添加表单验证和提交逻辑
-      alert('感谢您的留言！我们将尽快与您联系。');
-      contactForm.reset();
+    // 语言切换
+    languageOptions.forEach(option => {
+      option.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = option.getAttribute('data-lang');
+        changeLanguage(lang);
+        languageDropdown.classList.add('hidden');
+      });
     });
+
+    // 切换语言的函数
+    function changeLanguage(lang) {
+      // 更新当前语言显示
+      languageToggle.querySelector('span').textContent = lang === 'zh' ? '中文' : 'English';
+
+      // 更新页面内容
+      document.querySelectorAll('.lang').forEach(element => {
+        const key = element.getAttribute('key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+
+      // 更新页面lang属性
+      document.documentElement.lang = lang;
+
+      // 存储用户选择的语言
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // 初始化语言
+    function initLanguage() {
+      // 优先使用用户之前选择的语言
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang && translations[savedLang]) {
+        changeLanguage(savedLang);
+        return;
+      }
+
+      // 否则尝试使用浏览器语言
+      const browserLang = navigator.language.split('-')[0];
+      if (translations[browserLang]) {
+        changeLanguage(browserLang);
+        return;
+      }
+
+      // 默认使用中文
+      changeLanguage('zh');
+    }
+
+    // 初始化
+    initLanguage();
   </script>
-
-
 </body>
 
 </html>
