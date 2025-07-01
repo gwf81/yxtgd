@@ -1,0 +1,1219 @@
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GWF - 光纤通信解决方案提供商</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A2463',
+            secondary: '#3E92CC',
+            accent: '#F18805',
+            dark: '#121212',
+            light: '#F8F9FA'
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+      }
+      .transition-custom {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+      .hover-scale:hover {
+        transform: scale(1.03);
+      }
+    }
+  </style>
+</head>
+
+<body class="font-inter bg-light text-dark">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed w-full z-50 transition-all duration-300">
+    <nav class="bg-primary/95 text-white shadow-lg">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="#" class="flex-shrink-0 flex items-center">
+              <i class="fa fa-connectdevelop text-3xl mr-2"></i>
+              <span class="text-xl font-bold">GWF</span>
+            </a>
+            <div class="hidden md:ml-10 md:flex md:space-x-8">
+              <a href="#home"
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">首页</a>
+              <a href="#products"
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">产品中心</a>
+              <a href="#solutions"
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">解决方案</a>
+              <a href="#about"
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">关于我们</a>
+              <a href="#news"
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">新闻动态</a>
+              <a href="#contact"
+                class="text-white hover:text-accent px-3 py-2 text-sm font-medium transition-custom">联系我们</a>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <button type="button"
+                class="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-custom">在线咨询</button>
+            </div>
+            <div class="ml-4 flex items-center md:ml-6">
+              <button type="button"
+                class="p-1 rounded-full text-white hover:text-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
+                <span class="sr-only">搜索</span>
+                <i class="fa fa-search text-lg"></i>
+              </button>
+              <button type="button"
+                class="ml-3 p-1 rounded-full text-white hover:text-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent md:ml-0">
+                <span class="sr-only">语言选择</span>
+                <i class="fa fa-globe text-lg"></i>
+              </button>
+            </div>
+            <div class="ml-4 flex items-center md:hidden">
+              <button type="button" id="mobile-menu-button"
+                class="p-2 rounded-md text-white hover:text-accent focus:outline-none">
+                <span class="sr-only">打开主菜单</span>
+                <i class="fa fa-bars text-xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 移动端菜单 -->
+      <div id="mobile-menu" class="hidden md:hidden bg-primary/95">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="#home" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">首页</a>
+          <a href="#products" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">产品中心</a>
+          <a href="#solutions" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">解决方案</a>
+          <a href="#about" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">关于我们</a>
+          <a href="#news" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">新闻动态</a>
+          <a href="#contact" class="text-white hover:text-accent block px-3 py-2 text-base font-medium">联系我们</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 轮播图 -->
+  <section id="home" class="relative pt-16 overflow-hidden">
+    <div class="carousel relative h-[80vh]">
+      <div class="carousel-inner relative overflow-hidden w-full h-full">
+        <!-- 轮播项1 -->
+        <div class="carousel-item active absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/60 z-10"></div>
+          <img src="https://picsum.photos/id/180/1920/1080" alt="光纤网络解决方案"
+            class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 z-20 flex items-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="max-w-3xl">
+                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white leading-tight text-shadow-lg mb-4">
+                  高速光纤网络<br>连接未来
+                </h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 text-shadow">
+                  GWF提供业界领先的光纤通信解决方案，助力企业实现数字化转型，构建高速、稳定、智能的网络基础设施。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                  <a href="#products"
+                    class="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
+                    查看产品
+                  </a>
+                  <a href="#contact"
+                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
+                    联系我们
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 轮播项2 -->
+        <div class="carousel-item absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+          <div class="absolute inset-0 bg-gradient-to-r from-dark/80 to-primary/60 z-10"></div>
+          <img src="https://picsum.photos/id/250/1920/1080" alt="数据中心解决方案"
+            class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 z-20 flex items-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="max-w-3xl">
+                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white leading-tight text-shadow-lg mb-4">
+                  数据中心互联<br>无限可能
+                </h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 text-shadow">
+                  我们的数据中心解决方案提供高密度、低损耗的光纤连接，满足您对带宽的无限需求，支持业务快速发展。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                  <a href="#solutions"
+                    class="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
+                    解决方案
+                  </a>
+                  <a href="#case-studies"
+                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
+                    成功案例
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 轮播项3 -->
+        <div class="carousel-item absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-dark/60 z-10"></div>
+          <img src="https://picsum.photos/id/160/1920/1080" alt="5G网络建设"
+            class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 z-20 flex items-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="max-w-3xl">
+                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white leading-tight text-shadow-lg mb-4">
+                  5G时代<br>光纤先行
+                </h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 text-shadow">
+                  为5G网络建设提供可靠的光纤基础设施，支持超高速数据传输，助力万物互联的智能世界。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                  <a href="#5g-solutions"
+                    class="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
+                    5G解决方案
+                  </a>
+                  <a href="#contact"
+                    class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
+                    技术咨询
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 轮播控制按钮 -->
+        <button
+          class="absolute top-1/2 left-4 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-custom"
+          id="prev-slide">
+          <i class="fa fa-angle-left text-xl"></i>
+        </button>
+        <button
+          class="absolute top-1/2 right-4 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-custom"
+          id="next-slide">
+          <i class="fa fa-angle-right text-xl"></i>
+        </button>
+
+        <!-- 轮播指示器 -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+          <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white focus:outline-none carousel-indicator active"
+            data-index="0"></button>
+          <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white focus:outline-none carousel-indicator"
+            data-index="1"></button>
+          <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white focus:outline-none carousel-indicator"
+            data-index="2"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服务优势 -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">我们的服务优势</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg">GWF致力于为客户提供高品质的光纤通信产品和解决方案，凭借专业的技术团队和完善的服务体系，赢得了客户的广泛认可。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- 优势1 -->
+        <div class="bg-light rounded-xl p-8 shadow-lg hover-scale hover:shadow-xl transition-custom">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-lightbulb-o text-2xl text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">创新技术</h3>
+          <p class="text-gray-600">我们拥有一支高素质的研发团队，持续投入研发，不断推出创新产品，满足客户不断变化的需求。</p>
+        </div>
+
+        <!-- 优势2 -->
+        <div class="bg-light rounded-xl p-8 shadow-lg hover-scale hover:shadow-xl transition-custom">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-certificate text-2xl text-secondary"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">品质保证</h3>
+          <p class="text-gray-600">严格的质量控制体系，所有产品均通过多重测试，确保产品性能稳定可靠，符合国际标准。</p>
+        </div>
+
+        <!-- 优势3 -->
+        <div class="bg-light rounded-xl p-8 shadow-lg hover-scale hover:shadow-xl transition-custom">
+          <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-cogs text-2xl text-accent"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">定制服务</h3>
+          <p class="text-gray-600">根据客户的特定需求，提供个性化的解决方案和定制产品，为客户创造更大价值。</p>
+        </div>
+
+        <!-- 优势4 -->
+        <div class="bg-light rounded-xl p-8 shadow-lg hover-scale hover:shadow-xl transition-custom">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <i class="fa fa-headphones text-2xl text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">专业支持</h3>
+          <p class="text-gray-600">7×24小时技术支持团队，快速响应客户需求，为客户提供全方位的技术支持和售后服务。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品中心 -->
+  <section id="products" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">产品中心</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg">GWF提供全面的光纤通信产品，包括光纤连接器、光模块、光纤跳线、配线架等，满足不同领域的应用需求。</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 产品1 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/160/600/400" alt="光纤连接器"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+              <div class="p-6">
+                <span class="bg-accent text-white text-xs font-semibold px-2.5 py-0.5 rounded">热销产品</span>
+                <h3 class="text-xl font-bold text-white mt-2">光纤连接器</h3>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">高精度光纤连接器，低插入损耗，高回波损耗，广泛应用于数据中心、通信网络等领域。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary font-semibold">查看详情</span>
+              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
+                <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品2 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/161/600/400" alt="光模块"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+              <div class="p-6">
+                <span class="bg-secondary text-white text-xs font-semibold px-2.5 py-0.5 rounded">新品上市</span>
+                <h3 class="text-xl font-bold text-white mt-2">光模块</h3>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">高速光模块，支持10G/25G/40G/100G传输速率，低功耗设计，满足数据中心高速互联需求。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary font-semibold">查看详情</span>
+              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
+                <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品3 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/162/600/400" alt="光纤跳线"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+              <div class="p-6">
+                <span class="bg-primary text-white text-xs font-semibold px-2.5 py-0.5 rounded">畅销产品</span>
+                <h3 class="text-xl font-bold text-white mt-2">光纤跳线</h3>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">高品质光纤跳线，多种接头类型可选，支持不同应用场景，提供定制化长度和颜色服务。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary font-semibold">查看详情</span>
+              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
+                <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品4 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/163/600/400" alt="配线架"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+              <div class="p-6">
+                <span class="bg-secondary text-white text-xs font-semibold px-2.5 py-0.5 rounded">新品上市</span>
+                <h3 class="text-xl font-bold text-white mt-2">配线架</h3>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">高密度光纤配线架，模块化设计，便于安装和管理，优化数据中心空间利用率。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary font-semibold">查看详情</span>
+              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
+                <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品5 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/164/600/400" alt="光衰减器"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+              <div class="p-6">
+                <span class="bg-accent text-white text-xs font-semibold px-2.5 py-0.5 rounded">热销产品</span>
+                <h3 class="text-xl font-bold text-white mt-2">光衰减器</h3>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">高精度光衰减器，可调式和固定式可选，广泛应用于光通信系统测试和校准。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary font-semibold">查看详情</span>
+              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
+                <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品6 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/165/600/400" alt="光分路器"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+              <div class="p-6">
+                <span class="bg-primary text-white text-xs font-semibold px-2.5 py-0.5 rounded">畅销产品</span>
+                <h3 class="text-xl font-bold text-white mt-2">光分路器</h3>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">平面光波导型光分路器，低插入损耗，高可靠性，广泛应用于FTTH等光接入网。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary font-semibold">查看详情</span>
+              <a href="#" class="text-accent hover:text-accent/80 transition-custom">
+                <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#"
+          class="inline-flex items-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white rounded-md font-medium transition-custom">
+          查看全部产品
+          <i class="fa fa-long-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 解决方案 -->
+  <section id="solutions" class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">解决方案</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg">针对不同行业需求，GWF提供定制化的光纤通信解决方案，助力客户构建高效、稳定、智能的网络基础设施。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 解决方案1 -->
+        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
+          <img src="https://picsum.photos/id/180/600/800" alt="数据中心解决方案"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-server text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">数据中心解决方案</h3>
+            </div>
+            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              提供高密度、低损耗的光纤连接方案，优化数据中心空间利用率，支持高速数据传输，满足云计算、大数据等应用需求。
+            </p>
+            <a href="#"
+              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              了解更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 解决方案2 -->
+        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
+          <img src="https://picsum.photos/id/160/600/800" alt="5G网络解决方案"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-wifi text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">5G网络解决方案</h3>
+            </div>
+            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              为5G网络建设提供前传、中传和回传的光纤解决方案，支持高速率、低时延、大容量的5G通信需求。
+            </p>
+            <a href="#"
+              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              了解更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 解决方案3 -->
+        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
+          <img src="https://picsum.photos/id/162/600/800" alt="FTTH光纤到户解决方案"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-home text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">FTTH光纤到户解决方案</h3>
+            </div>
+            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              提供从局端到用户端的完整FTTH解决方案，包括光线路终端、光分配网络和光网络单元，实现家庭高速宽带接入。
+            </p>
+            <a href="#"
+              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              了解更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 解决方案4 -->
+        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
+          <img src="https://picsum.photos/id/165/600/800" alt="智能建筑解决方案"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-building text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">智能建筑解决方案</h3>
+            </div>
+            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              为智能建筑提供综合布线解决方案，支持语音、数据、视频和控制信号的传输，构建智能、高效、舒适的建筑环境。
+            </p>
+            <a href="#"
+              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              了解更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 解决方案5 -->
+        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
+          <img src="https://picsum.photos/id/164/600/800" alt="工业自动化解决方案"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-cogs text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">工业自动化解决方案</h3>
+            </div>
+            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              提供工业级光纤通信解决方案，满足恶劣环境下的高速数据传输需求，支持工业4.0和智能制造发展。
+            </p>
+            <a href="#"
+              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              了解更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 解决方案6 -->
+        <div class="group relative h-80 rounded-xl overflow-hidden shadow-lg">
+          <img src="https://picsum.photos/id/161/600/800" alt="广电网络解决方案"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent transition-all duration-500 group-hover:bg-gradient-to-t from-dark/95 via-dark/60 to-transparent">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:translate-y-0">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-television text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">广电网络解决方案</h3>
+            </div>
+            <p class="text-white/80 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              为广电网络提供高质量的光纤传输解决方案，支持高清视频、IPTV和数据业务的融合传输，提升用户体验。
+            </p>
+            <a href="#"
+              class="inline-flex items-center text-accent hover:text-white transition-custom opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              了解更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于我们 -->
+  <section id="about" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <div class="absolute -top-4 -left-4 w-24 h-24 border-4 border-accent rounded-lg z-0"></div>
+          <div class="relative z-10">
+            <img src="https://picsum.photos/id/200/600/800" alt="公司办公环境" class="rounded-lg shadow-xl w-full h-auto">
+            <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg max-w-xs">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
+                  <i class="fa fa-trophy text-accent text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">行业领先企业</p>
+                  <p class="text-lg font-bold text-dark">10+年行业经验</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-6">关于 GWF</h2>
+          <p class="text-gray-600 mb-6">
+            GWF成立于2010年，是一家专注于光纤通信产品研发、生产和销售的高新技术企业。公司总部位于中国深圳，在上海、北京、广州等地设有分支机构，业务覆盖全球多个国家和地区。
+          </p>
+          <p class="text-gray-600 mb-6">
+            作为光纤通信领域的领先企业，我们拥有一支由行业专家和技术精英组成的研发团队，致力于为客户提供高品质的光纤通信产品和解决方案。我们的产品广泛应用于数据中心、5G网络、FTTH、智能建筑、工业自动化等领域。
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div class="text-center">
+              <div class="text-4xl font-bold text-primary mb-2">100+</div>
+              <p class="text-gray-600">产品种类</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-primary mb-2">50+</div>
+              <p class="text-gray-600">国家地区</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-primary mb-2">200+</div>
+              <p class="text-gray-600">专业团队</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-primary mb-2">50+</div>
+              <p class="text-gray-600">技术专利</p>
+            </div>
+          </div>
+
+          <a href="#"
+            class="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-md font-medium transition-custom shadow-lg hover:shadow-xl">
+            了解更多公司信息
+            <i class="fa fa-long-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 销售网络 -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">全球销售网络</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg">GWF的产品和服务已覆盖全球多个国家和地区，为客户提供及时、专业的技术支持和售后服务。</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-2xl p-8 shadow-lg">
+        <div class="h-96 relative">
+          <canvas id="salesChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新闻动态 -->
+  <section id="news" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">新闻动态</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg">了解GWF的最新产品发布、行业动态和公司新闻，把握光纤通信领域的最新趋势。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 新闻1 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://picsum.photos/id/160/600/400" alt="GWF发布新一代高速光模块"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute top-4 left-4 bg-accent text-white text-xs font-semibold px-2.5 py-0.5 rounded">
+              产品发布
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-gray-500 text-sm mb-3">
+              <i class="fa fa-calendar-o mr-2"></i>
+              <span>2025年6月15日</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-primary transition-custom">GWF发布新一代高速光模块，支持400G传输速率</h3>
+            <p class="text-gray-600 mb-4">GWF今日宣布推出新一代高速光模块产品，支持400G传输速率，满足数据中心日益增长的带宽需求。</p>
+            <a href="#" class="inline-flex items-center text-primary hover:text-accent transition-custom">
+              阅读更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 新闻2 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://picsum.photos/id/161/600/400" alt="GWF荣获行业创新奖"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute top-4 left-4 bg-secondary text-white text-xs font-semibold px-2.5 py-0.5 rounded">
+              公司新闻
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-gray-500 text-sm mb-3">
+              <i class="fa fa-calendar-o mr-2"></i>
+              <span>2025年5月28日</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-primary transition-custom">GWF荣获"年度最佳创新企业"称号</h3>
+            <p class="text-gray-600 mb-4">在2025年度通信行业颁奖典礼上，GWF凭借其在光纤通信领域的创新技术和卓越产品，荣获"年度最佳创新企业"称号。</p>
+            <a href="#" class="inline-flex items-center text-primary hover:text-accent transition-custom">
+              阅读更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 新闻3 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale transition-custom">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://picsum.photos/id/162/600/400" alt="GWF与全球知名企业达成合作"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-2.5 py-0.5 rounded">
+              合作动态
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-gray-500 text-sm mb-3">
+              <i class="fa fa-calendar-o mr-2"></i>
+              <span>2025年4月10日</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-primary transition-custom">GWF与全球知名数据中心运营商达成战略合作</h3>
+            <p class="text-gray-600 mb-4">GWF今日宣布与全球知名数据中心运营商达成战略合作，为其提供高性能光纤连接解决方案，支持其全球数据中心网络升级。</p>
+            <a href="#" class="inline-flex items-center text-primary hover:text-accent transition-custom">
+              阅读更多
+              <i class="fa fa-angle-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#"
+          class="inline-flex items-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white rounded-md font-medium transition-custom">
+          查看全部新闻
+          <i class="fa fa-long-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们 -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-6">联系我们</h2>
+          <p class="text-gray-600 mb-8">
+            如果您对我们的产品或服务有任何疑问，或需要了解更多信息，请随时与我们联系。我们的专业团队将为您提供详细的咨询和支持。
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-map-marker text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">总部地址</h3>
+                <p class="text-gray-600">广东省深圳市南山区科技园南区科技南十二路8号中电长城大厦15层</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-phone text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">联系电话</h3>
+                <p class="text-gray-600">+86 755-88888888</p>
+                <p class="text-gray-600">+86 755-88888889</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-envelope text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">电子邮箱</h3>
+                <p class="text-gray-600">info@szgwf.com</p>
+                <p class="text-gray-600">support@szgwf.com</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fa fa-clock-o text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">工作时间</h3>
+                <p class="text-gray-600">周一至周五: 9:00 - 18:00</p>
+                <p class="text-gray-600">周六至周日: 休息</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-lg font-semibold mb-4">关注我们</h3>
+            <div class="flex space-x-4">
+              <a href="#"
+                class="w-10 h-10 bg-primary/10 hover:bg-primary/20 text-primary rounded-full flex items-center justify-center transition-custom">
+                <i class="fa fa-weixin"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 bg-primary/10 hover:bg-primary/20 text-primary rounded-full flex items-center justify-center transition-custom">
+                <i class="fa fa-weibo"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 bg-primary/10 hover:bg-primary/20 text-primary rounded-full flex items-center justify-center transition-custom">
+                <i class="fa fa-linkedin"></i>
+              </a>
+              <a href="#"
+                class="w-10 h-10 bg-primary/10 hover:bg-primary/20 text-primary rounded-full flex items-center justify-center transition-custom">
+                <i class="fa fa-youtube-play"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-gray-50 rounded-xl p-8 shadow-lg">
+            <h3 class="text-xl font-bold mb-6">发送询价</h3>
+            <form id="contact-form">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                  <input type="text" id="name" name="name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom"
+                    placeholder="请输入您的姓名" required="">
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                  <input type="email" id="email" name="email"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom"
+                    placeholder="请输入您的邮箱" required="">
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">电话</label>
+                <input type="tel" id="phone" name="phone"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom"
+                  placeholder="请输入您的电话">
+              </div>
+
+              <div class="mb-6">
+                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">主题</label>
+                <select id="subject" name="subject"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom">
+                  <option value="">请选择咨询主题</option>
+                  <option value="product">产品咨询</option>
+                  <option value="solution">解决方案咨询</option>
+                  <option value="support">技术支持</option>
+                  <option value="partnership">合作洽谈</option>
+                  <option value="other">其他问题</option>
+                </select>
+              </div>
+
+              <div class="mb-6">
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">留言内容</label>
+                <textarea id="message" name="message" rows="5"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-custom"
+                  placeholder="请输入您的留言内容" required=""></textarea>
+              </div>
+
+              <div class="flex items-center mb-6">
+                <input type="checkbox" id="privacy" name="privacy"
+                  class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" required="">
+                <label for="privacy" class="ml-2 block text-sm text-gray-600">
+                  我同意根据<a href="#" class="text-primary hover:underline">隐私政策</a>处理我的个人信息
+                </label>
+              </div>
+
+              <button type="submit"
+                class="w-full bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md text-base font-medium transition-custom shadow-lg hover:shadow-xl">
+                发送信息
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div>
+          <div class="flex items-center mb-6">
+            <i class="fa fa-connectdevelop text-3xl mr-2"></i>
+            <span class="text-xl font-bold">GWF</span>
+          </div>
+          <p class="text-gray-400 mb-6">
+            GWF是一家专注于光纤通信产品研发、生产和销售的高新技术企业，为全球客户提供高品质的光纤通信解决方案。
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-custom">
+              <i class="fa fa-weixin text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-custom">
+              <i class="fa fa-weibo text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-custom">
+              <i class="fa fa-linkedin text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-custom">
+              <i class="fa fa-youtube-play text-lg"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+          <ul class="space-y-3">
+            <li><a href="#home" class="text-gray-400 hover:text-white transition-custom">首页</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition-custom">产品中心</a></li>
+            <li><a href="#solutions" class="text-gray-400 hover:text-white transition-custom">解决方案</a></li>
+            <li><a href="#about" class="text-gray-400 hover:text-white transition-custom">关于我们</a></li>
+            <li><a href="#news" class="text-gray-400 hover:text-white transition-custom">新闻动态</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition-custom">联系我们</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-6">产品中心</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光纤连接器</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光模块</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光纤跳线</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">配线架</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光衰减器</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-custom">光分路器</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-6">联系我们</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fa fa-map-marker text-accent mt-1 mr-3"></i>
+              <span class="text-gray-400">广东省深圳市</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-phone text-accent mt-1 mr-3"></i>
+              <span class="text-gray-400">+86 755-88888888</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-envelope text-accent mt-1 mr-3"></i>
+              <span class="text-gray-400">info@GWF.com</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-clock-o text-accent mt-1 mr-3"></i>
+              <span class="text-gray-400">周一至周五: 9:00 - 18:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-500 text-sm mb-4 md:mb-0">
+            © 2025 GWF. 保留所有权利.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">隐私政策</a>
+            <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">使用条款</a>
+            <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">网站地图</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top"
+    class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+    <i class="fa fa-angle-up text-xl"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 100) {
+        navbar.classList.add('bg-primary');
+        navbar.classList.remove('bg-primary/95');
+        navbar.classList.add('shadow-md');
+
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        navbar.classList.remove('bg-primary');
+        navbar.classList.add('bg-primary/95');
+        navbar.classList.remove('shadow-md');
+
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    // 移动端菜单切换
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', function () {
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuButton.innerHTML = '<span class="sr-only">关闭主菜单</span><i class="fa fa-times text-xl"></i>';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.innerHTML = '<span class="sr-only">打开主菜单</span><i class="fa fa-bars text-xl"></i>';
+      }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+
+          // 关闭移动菜单
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.innerHTML = '<span class="sr-only">打开主菜单</span><i class="fa fa-bars text-xl"></i>';
+          }
+        }
+      });
+    });
+
+    // 返回顶部按钮
+    backToTopBtn.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 轮播图
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      // 隐藏所有轮播项
+      carouselItems.forEach(item => {
+        item.classList.remove('active');
+        item.style.opacity = '0';
+      });
+
+      // 移除所有指示器的活动状态
+      indicators.forEach(indicator => {
+        indicator.classList.remove('active');
+      });
+
+      // 显示当前轮播项
+      carouselItems[index].classList.add('active');
+      setTimeout(() => {
+        carouselItems[index].style.opacity = '1';
+      }, 50);
+
+      // 设置当前指示器为活动状态
+      indicators[index].classList.add('active');
+
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      let next = currentSlide + 1;
+      if (next >= carouselItems.length) {
+        next = 0;
+      }
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      let prev = currentSlide - 1;
+      if (prev < 0) {
+        prev = carouselItems.length - 1;
+      }
+      showSlide(prev);
+    }
+
+    // 初始化轮播图
+    showSlide(0);
+
+    // 自动轮播
+    function startSlideInterval() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    startSlideInterval();
+
+    // 轮播图控制
+    prevBtn.addEventListener('click', function () {
+      clearInterval(slideInterval);
+      prevSlide();
+      startSlideInterval();
+    });
+
+    nextBtn.addEventListener('click', function () {
+      clearInterval(slideInterval);
+      nextSlide();
+      startSlideInterval();
+    });
+
+    // 指示器点击事件
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', function () {
+        clearInterval(slideInterval);
+        showSlide(index);
+        startSlideInterval();
+      });
+    });
+
+    // 销售数据图表
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    const salesChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['北美', '欧洲', '亚太', '中东', '非洲', '拉丁美洲'],
+        datasets: [{
+          label: '2024年销售额 (百万美元)',
+          data: [120, 95, 140, 35, 25, 40],
+          backgroundColor: '#0A2463',
+          borderRadius: 6
+        }, {
+          label: '2025年销售额 (百万美元)',
+          data: [150, 110, 180, 45, 35, 55],
+          backgroundColor: '#3E92CC',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: '全球销售分布'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: '销售额 (百万美元)'
+            }
+          }
+        }
+      }
+    });
+
+    // 表单提交
+    const contactForm = document.getElementById('contact-form');
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // 这里可以添加表单验证和提交逻辑
+      alert('感谢您的留言！我们将尽快与您联系。');
+      contactForm.reset();
+    });
+  </script>
+
+
+</body>
+
+</html>
